@@ -1,9 +1,13 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('search');
-    
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        console.log(`Search query: ${query}`);
-        // Add search functionality here (e.g., filter content or fetch results)
-    });
-});
+function isIE() {
+  const ua = window.navigator.userAgent;
+  return ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1;
+}
+
+function notExcludedPage() {
+  return !window.location.href.includes("/unsupported-browser/") &&
+         !document.title.toLowerCase().includes('page not found');
+}
+
+if (isIE() && notExcludedPage()) {
+  window.location.href = `${location.protocol}//${location.host}/unsupported-browser/`;
+}
