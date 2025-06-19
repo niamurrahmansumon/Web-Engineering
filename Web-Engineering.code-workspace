@@ -4,5 +4,8 @@
             "name": "Web-Engineering",
             "path": "."
         }
-    ]
+    ],
+    "settings": {
+        "gitdoc.enabled": true
+    }
 }
