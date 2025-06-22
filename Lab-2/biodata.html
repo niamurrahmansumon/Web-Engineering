@@ -86,6 +86,7 @@
           <input type="text" id="name" required>
           <span id="nameIcon" class="icon"></span>
         </div>
+        <small id="nameError"></small>
       </label>
       <label>
         Father Name:
@@ -93,6 +94,7 @@
           <input type="text" id="fatherName" required>
           <span id="fatherNameIcon" class="icon"></span>
         </div>
+        <small id="fatherNameError"></small>
       </label>
       <label>
         Mother Name:
@@ -100,6 +102,7 @@
           <input type="text" id="motherName" required>
           <span id="motherNameIcon" class="icon"></span>
         </div>
+        <small id="motherNameError"></small>
       </label>
       <label>
         Qualification Details:
@@ -170,8 +173,9 @@
       }
     });
 
+    // Only letters, spaces, dots, hyphens, apostrophes allowed
     function validateName(name) {
-      return name.trim().length > 0;
+      return /^[A-Za-z .'-]+$/.test(name.trim()) && name.trim().length > 0;
     }
     function validateDOB(dob) {
       return !!dob;
@@ -228,6 +232,11 @@
       }
     }
 
+    // Error message elements
+    const nameError = document.getElementById("nameError");
+    const fatherNameError = document.getElementById("fatherNameError");
+    const motherNameError = document.getElementById("motherNameError");
+
     const nameInput = document.getElementById("name");
     const dobInput = document.getElementById("dob");
     const heightInput = document.getElementById("height");
@@ -248,9 +257,23 @@
 
     const genderRadios = document.querySelectorAll('input[name="gender"]');
 
+    // Use the improved name validation for all name fields
     nameInput.addEventListener("input", () => {
-      setValidation(nameInput, nameIcon, validateName(nameInput.value));
+      const valid = validateName(nameInput.value);
+      setValidation(nameInput, nameIcon, valid);
+      nameError.textContent = valid || nameInput.value === "" ? "" : "Only letters, spaces, dots, hyphens, apostrophes allowed.";
     });
+    fatherNameInput.addEventListener("input", () => {
+      const valid = validateName(fatherNameInput.value);
+      setValidation(fatherNameInput, fatherNameIcon, valid);
+      fatherNameError.textContent = valid || fatherNameInput.value === "" ? "" : "Only letters, spaces, dots, hyphens, apostrophes allowed.";
+    });
+    motherNameInput.addEventListener("input", () => {
+      const valid = validateName(motherNameInput.value);
+      setValidation(motherNameInput, motherNameIcon, valid);
+      motherNameError.textContent = valid || motherNameInput.value === "" ? "" : "Only letters, spaces, dots, hyphens, apostrophes allowed.";
+    });
+
     dobInput.addEventListener("input", () => {
       setValidation(dobInput, dobIcon, validateDOB(dobInput.value));
     });
@@ -261,12 +284,6 @@
       setValidation(passwordInput, passwordIcon, validatePassword(passwordInput.value));
     });
 
-    fatherNameInput.addEventListener("input", () => {
-      setValidation(fatherNameInput, fatherNameIcon, validateTextField(fatherNameInput.value));
-    });
-    motherNameInput.addEventListener("input", () => {
-      setValidation(motherNameInput, motherNameIcon, validateTextField(motherNameInput.value));
-    });
     qualificationInput.addEventListener("input", () => {
       setValidation(qualificationInput, qualificationIcon, validateTextField(qualificationInput.value));
     });
@@ -283,26 +300,29 @@
     document.getElementById("bioForm").addEventListener("submit", function(e){
       const valid =
         validateName(nameInput.value) &&
+        validateName(fatherNameInput.value) &&
+        validateName(motherNameInput.value) &&
         validateDOB(dobInput.value) &&
         validateHeight(heightInput.value) &&
         validatePassword(passwordInput.value) &&
-        validateTextField(fatherNameInput.value) &&
-        validateTextField(motherNameInput.value) &&
         validateTextField(qualificationInput.value) &&
         validateWeight(weightInput.value) &&
         validateGender();
       setValidation(nameInput, nameIcon, validateName(nameInput.value));
+      setValidation(fatherNameInput, fatherNameIcon, validateName(fatherNameInput.value));
+      setValidation(motherNameInput, motherNameIcon, validateName(motherNameInput.value));
       setValidation(dobInput, dobIcon, validateDOB(dobInput.value));
       setValidation(heightInput, heightIcon, validateHeight(heightInput.value));
       setValidation(passwordInput, passwordIcon, validatePassword(passwordInput.value));
-      setValidation(fatherNameInput, fatherNameIcon, validateTextField(fatherNameInput.value));
-      setValidation(motherNameInput, motherNameIcon, validateTextField(motherNameInput.value));
       setValidation(qualificationInput, qualificationIcon, validateTextField(qualificationInput.value));
       setValidation(weightInput, weightIcon, validateWeight(weightInput.value));
       setGenderValidation(validateGender());
+      nameError.textContent = validateName(nameInput.value) || nameInput.value === "" ? "" : "Only letters, spaces, dots, hyphens, apostrophes allowed.";
+      fatherNameError.textContent = validateName(fatherNameInput.value) || fatherNameInput.value === "" ? "" : "Only letters, spaces, dots, hyphens, apostrophes allowed.";
+      motherNameError.textContent = validateName(motherNameInput.value) || motherNameInput.value === "" ? "" : "Only letters, spaces, dots, hyphens, apostrophes allowed.";
       if (!valid) {
         e.preventDefault();
-        alert("Please fill all fields correctly.");
+        alert("Please fill all fields correctly before submitting.");
       }
     });
   </script>
