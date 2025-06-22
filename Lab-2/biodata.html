@@ -115,7 +115,7 @@
   </section>
   <script>
     function validateName(name) {
-      return name.trim().length > 0;
+      return name.trim().length > 2 && /^[A-Za-z\s]+$/.test(name);
     }
     function validateDOB(dob) {
       return !!dob;
