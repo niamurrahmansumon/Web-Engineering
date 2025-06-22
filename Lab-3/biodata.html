@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bio Data Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f8f8; }
+    section { background: #fff; padding: 2rem; border-radius: 8px; max-width: 400px; margin: 2rem auto; box-shadow: 0 2px 8px #0001; }
+    label { display: block; margin-bottom: 1rem; }
+    input, select { width: 100%; padding: 0.5em 2em 0.5em 0.5em; font-size: 1em; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    input:focus, select:focus { outline: none; border-color: #888; }
+    .input-wrap { position: relative; }
+    .icon { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 1.2em; pointer-events: none; }
+    .valid { border-color: green !important; }
+    .invalid { border-color: red !important; }
+    .icon.valid { color: green; }
+    .icon.invalid { color: red; }
+    small { color: #555; }
+    button { padding: 0.5em 1.5em; font-size: 1em; border: none; border-radius: 4px; background: #a51c30; color: #fff; cursor: pointer; }
+    button:hover { background: #7d1622; }
+  </style>
+</head>
+<body>
+  <section>
+    <form id="bioForm" autocomplete="off" novalidate>
+      <label>
+        Name:
+        <div class="input-wrap">
+          <input type="text" id="name" required>
+          <span id="nameIcon" class="icon"></span>
+        </div>
+      </label>
+      <label>
+        Date of Birth:
+        <div class="input-wrap">
+          <input type="date" id="dob" required>
+          <span id="dobIcon" class="icon"></span>
+        </div>
+      </label>
+      <label>
+        Height:
+        <div class="input-wrap">
+          <select id="height" required>
+            <option value="">Select height</option>
+            <option value="150">150 cm</option>
+            <option value="155">155 cm</option>
+            <option value="160">160 cm</option>
+            <option value="165">165 cm</option>
+            <option value="170">170 cm</option>
+            <option value="175">175 cm</option>
+            <option value="180">180 cm</option>
+          </select>
+          <span id="heightIcon" class="icon"></span>
+        </div>
+      </label>
+      <label>
+        Password:
+        <div class="input-wrap">
+          <input type="password" id="password" required>
+          <span id="passwordIcon" class="icon"></span>
+        </div>
+        <small>Min 8 chars, 1 upper, 1 lower, 1 special</small>
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+  <script>
+    // Validation functions
+    function validateName(name) {
+      return name.trim().length > 0;
+    }
+    function validateDOB(dob) {
+      return !!dob;
+    }
+    function validateHeight(height) {
+      return !!height;
+    }
+    function validatePassword(pw) {
+      return (
+        pw.length >= 8 &&
+        /[A-Z]/.test(pw) &&
+        /[a-z]/.test(pw) &&
+        /[^A-Za-z0-9]/.test(pw)
+      );
+    }
+    function setValidation(input, icon, valid) {
+      input.classList.remove('valid', 'invalid');
+      icon.classList.remove('valid', 'invalid');
+      if (input.value === "") {
+        icon.textContent = "";
+        return;
+      }
+      if (valid) {
+        input.classList.add('valid');
+        icon.classList.add('valid');
+        icon.textContent = "✓";
+      } else {
+        input.classList.add('invalid');
+        icon.classList.add('invalid');
+        icon.textContent = "✗";
+      }
+    }
+    // DOM elements
+    const nameInput = document.getElementById("name");
+    const dobInput = document.getElementById("dob");
+    const heightInput = document.getElementById("height");
+    const passwordInput = document.getElementById("password");
+    const nameIcon = document.getElementById("nameIcon");
+    const dobIcon = document.getElementById("dobIcon");
+    const heightIcon = document.getElementById("heightIcon");
+    const passwordIcon = document.getElementById("passwordIcon");
+
+    nameInput.addEventListener("input", () => {
+      setValidation(nameInput, nameIcon, validateName(nameInput.value));
+    });
+    dobInput.addEventListener("input", () => {
+      setValidation(dobInput, dobIcon, validateDOB(dobInput.value));
+    });
+    heightInput.addEventListener("change", () => {
+      setValidation(heightInput, heightIcon, validateHeight(heightInput.value));
+    });
+    passwordInput.addEventListener("input", () => {
+      setValidation(passwordInput, passwordIcon, validatePassword(passwordInput.value));
+    });
+
+    document.getElementById("bioForm").addEventListener("submit", function(e){
+      const valid =
+        validateName(nameInput.value) &&
+        validateDOB(dobInput.value) &&
+        validateHeight(heightInput.value) &&
+        validatePassword(passwordInput.value);
+      setValidation(nameInput, nameIcon, validateName(nameInput.value));
+      setValidation(dobInput, dobIcon, validateDOB(dobInput.value));
+      setValidation(heightInput, heightIcon, validateHeight(heightInput.value));
+      setValidation(passwordInput, passwordIcon, validatePassword(passwordInput.value));
+      if (!valid) {
+        e.preventDefault();
+        alert("Please fill all fields correctly.");
+      }
+    });
+  </script>
+</body>
+</html>
