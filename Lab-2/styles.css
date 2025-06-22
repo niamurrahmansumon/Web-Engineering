@@ -1,59 +1,123 @@
-* {
+body, html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  height: 100%;
+  font-family: 'Georgia', serif;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background: #fff;
+.hero-bg {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.8)), 
+    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
 }
 
-.site-header {
-  background: #a51c30;
-  color: #fff;
-  padding: 1rem;
-}
-
-.site-header__wrapper {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 18px 32px 0 32px;
+  position: relative;
+  z-index: 2;
 }
 
-.site-header a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.site-navigation ul {
-  list-style: none;
+.navbar-left {
   display: flex;
-  gap: 1rem;
+  align-items: center;
 }
 
-.hero {
-  padding: 4rem 2rem;
+.logo {
+  height: 48px;
+  margin-right: 16px;
+}
+
+.harvard-title {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-right: 32px;
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+
+.lawsuit-alert {
+  color: #fff;
+  font-size: 1rem;
+  margin-left: 18px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.lawsuit-alert .dot {
+  width: 8px;
+  height: 8px;
+  background: #e53935;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.search, .menu {
+  color: #fff;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.search-icon {
+  font-size: 1.3rem;
+  margin-right: 6px;
+}
+
+.menu-icon {
+  font-size: 1.6rem;
+  margin-right: 6px;
+}
+
+.hero-content {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -30%);
   text-align: center;
-  background-color: #f4f4f4;
+  color: #fff;
+  width: 100%;
+  z-index: 1;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
-  color: #a51c30;
+.hero-content h1 {
+  font-size: 5rem;
+  font-family: 'Georgia', serif;
+  font-weight: 400;
+  margin: 0 0 24px 0;
+  line-height: 1.1;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.4);
 }
 
-.hero p {
+.hero-content p {
   font-size: 1.2rem;
-  margin-top: 1rem;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
-.site-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #eee;
-  margin-top: 4rem;
+@media (max-width: 800px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+  }
+  .navbar-right {
+    gap: 16px;
+  }
 }
