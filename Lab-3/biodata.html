@@ -18,6 +18,9 @@
     small { color: #555; }
     button { padding: 0.5em 1.5em; font-size: 1em; border: none; border-radius: 4px; background: #a51c30; color: #fff; cursor: pointer; }
     button:hover { background: #7d1622; }
+    .gender-group { display: flex; align-items: center; gap: 1em; margin-top: 0.5em; }
+    .gender-label { margin-bottom: 0.3em; }
+    .gender-icon { margin-left: 0.5em; font-size: 1.2em; vertical-align: middle; }
   </style>
 </head>
 <body>
@@ -81,6 +84,15 @@
           <span id="heightIcon" class="icon"></span>
         </div>
       </label>
+      <label class="gender-label">
+        Gender:
+        <span id="genderIcon" class="gender-icon"></span>
+        <div class="gender-group">
+          <label><input type="radio" name="gender" value="Male" id="genderMale"> Male</label>
+          <label><input type="radio" name="gender" value="Female" id="genderFemale"> Female</label>
+          <label><input type="radio" name="gender" value="Other" id="genderOther"> Other</label>
+        </div>
+      </label>
       <label>
         Password:
         <div class="input-wrap">
@@ -116,10 +128,13 @@
     function validateWeight(val) {
       return val !== "" && !isNaN(val) && Number(val) > 0;
     }
+    function validateGender() {
+      return document.querySelector('input[name="gender"]:checked') !== null;
+    }
     function setValidation(input, icon, valid) {
       input.classList.remove('valid', 'invalid');
       icon.classList.remove('valid', 'invalid');
-      if (input.value === "") {
+      if (input.value === "" || (input.type === "radio" && !input.checked)) {
         icon.textContent = "";
         return;
       }
@@ -133,6 +148,21 @@
         icon.textContent = "✗";
       }
     }
+    // Gender validation icon handler
+    function setGenderValidation(valid) {
+      const icon = document.getElementById("genderIcon");
+      icon.classList.remove('valid', 'invalid');
+      if (valid) {
+        icon.classList.add('valid');
+        icon.textContent = "✓";
+        icon.style.color = "green";
+      } else {
+        icon.classList.add('invalid');
+        icon.textContent = "✗";
+        icon.style.color = "red";
+      }
+    }
+
     const nameInput = document.getElementById("name");
     const dobInput = document.getElementById("dob");
     const heightInput = document.getElementById("height");
@@ -150,6 +180,8 @@
     const motherNameIcon = document.getElementById("motherNameIcon");
     const qualificationIcon = document.getElementById("qualificationIcon");
     const weightIcon = document.getElementById("weightIcon");
+
+    const genderRadios = document.querySelectorAll('input[name="gender"]');
 
     nameInput.addEventListener("input", () => {
       setValidation(nameInput, nameIcon, validateName(nameInput.value));
@@ -177,6 +209,12 @@
       setValidation(weightInput, weightIcon, validateWeight(weightInput.value));
     });
 
+    genderRadios.forEach(radio => {
+      radio.addEventListener("change", () => {
+        setGenderValidation(validateGender());
+      });
+    });
+
     document.getElementById("bioForm").addEventListener("submit", function(e){
       const valid =
         validateName(nameInput.value) &&
@@ -186,7 +224,8 @@
         validateTextField(fatherNameInput.value) &&
         validateTextField(motherNameInput.value) &&
         validateTextField(qualificationInput.value) &&
-        validateWeight(weightInput.value);
+        validateWeight(weightInput.value) &&
+        validateGender();
       setValidation(nameInput, nameIcon, validateName(nameInput.value));
       setValidation(dobInput, dobIcon, validateDOB(dobInput.value));
       setValidation(heightInput, heightIcon, validateHeight(heightInput.value));
@@ -195,6 +234,7 @@
       setValidation(motherNameInput, motherNameIcon, validateTextField(motherNameInput.value));
       setValidation(qualificationInput, qualificationIcon, validateTextField(qualificationInput.value));
       setValidation(weightInput, weightIcon, validateWeight(weightInput.value));
+      setGenderValidation(validateGender());
       if (!valid) {
         e.preventDefault();
         alert("Please fill all fields correctly.");
