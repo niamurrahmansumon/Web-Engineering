@@ -5,7 +5,34 @@
   <title>Bio Data Form</title>
   <style>
     body { font-family: Arial, sans-serif; background: #f8f8f8; }
-    section { background: #fff; padding: 2rem; border-radius: 8px; max-width: 400px; margin: 2rem auto; box-shadow: 0 2px 8px #0001; }
+    section { background: #fff; padding: 2rem; border-radius: 8px; max-width: 400px; margin: 2rem auto; box-shadow: 0 2px 8px #0001; position: relative; }
+    .photo-upload {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      text-align: center;
+      z-index: 2;
+    }
+    .photo-preview {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #1976d2;
+      background: #eee;
+      display: block;
+      margin-bottom: 0.5em;
+    }
+    .photo-upload label {
+      display: block;
+      font-size: 0.9em;
+      margin-bottom: 0.3em;
+      color: #1976d2;
+      cursor: pointer;
+    }
+    .photo-upload input[type="file"] {
+      display: none;
+    }
     label { display: block; margin-bottom: 1rem; }
     input, select { width: 100%; padding: 0.5em 2em 0.5em 0.5em; font-size: 1em; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box; }
     input:focus, select:focus { outline: none; border-color: #888; }
@@ -17,23 +44,33 @@
     .icon.invalid { color: red; }
     small { color: #555; }
     button {
-    padding: 0.5em 1.5em;
-    font-size: 1em;
-    border: none;
-    border-radius: 4px;
-    background: #1976d2; /* Blue */
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
+      padding: 0.5em 1.5em;
+      font-size: 1em;
+      border: none;
+      border-radius: 4px;
+      background: #1976d2; /* Blue */
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
     button:hover { background: #115293; }
     .gender-group { display: flex; align-items: center; gap: 1em; margin-top: 0.5em; }
     .gender-label { margin-bottom: 0.3em; }
     .gender-icon { margin-left: 0.5em; font-size: 1.2em; vertical-align: middle; }
+    @media (max-width: 500px) {
+      .photo-upload { position: static; margin-bottom: 1em; }
+      section { padding-top: 1em; }
+    }
   </style>
 </head>
 <body>
   <section>
+    <!-- Photo Upload Section -->
+    <div class="photo-upload">
+      <img id="photoPreview" class="photo-preview" src="https://via.placeholder.com/80x80?text=Photo" alt="Photo Preview">
+      <label for="photoInput">Upload Photo</label>
+      <input type="file" id="photoInput" accept="image/*">
+    </div>
     <form id="bioForm" autocomplete="off" novalidate>
       <label>
         My Name:
@@ -114,6 +151,18 @@
     </form>
   </section>
   <script>
+    // Photo preview logic
+    document.getElementById('photoInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          document.getElementById('photoPreview').src = evt.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
     function validateName(name) {
       return name.trim().length > 0;
     }
@@ -250,3 +299,5 @@
       }
     });
   </script>
+</body>
+</html>
