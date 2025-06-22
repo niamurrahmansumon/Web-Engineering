@@ -173,7 +173,6 @@
       }
     });
 
-    // Only letters, spaces, dots, hyphens, apostrophes allowed
     function validateName(name) {
       return /^[A-Za-z .'-]+$/.test(name.trim()) && name.trim().length > 0;
     }
@@ -232,7 +231,6 @@
       }
     }
 
-    // Error message elements
     const nameError = document.getElementById("nameError");
     const fatherNameError = document.getElementById("fatherNameError");
     const motherNameError = document.getElementById("motherNameError");
@@ -257,7 +255,6 @@
 
     const genderRadios = document.querySelectorAll('input[name="gender"]');
 
-    // Use the improved name validation for all name fields
     nameInput.addEventListener("input", () => {
       const valid = validateName(nameInput.value);
       setValidation(nameInput, nameIcon, valid);
