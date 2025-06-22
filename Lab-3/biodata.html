@@ -31,6 +31,34 @@
         </div>
       </label>
       <label>
+        Father Name:
+        <div class="input-wrap">
+          <input type="text" id="fatherName" required>
+          <span id="fatherNameIcon" class="icon"></span>
+        </div>
+      </label>
+      <label>
+        Mother Name:
+        <div class="input-wrap">
+          <input type="text" id="motherName" required>
+          <span id="motherNameIcon" class="icon"></span>
+        </div>
+      </label>
+      <label>
+        Qualification Details:
+        <div class="input-wrap">
+          <input type="text" id="qualification" required>
+          <span id="qualificationIcon" class="icon"></span>
+        </div>
+      </label>
+      <label>
+        Weight (kg):
+        <div class="input-wrap">
+          <input type="number" id="weight" min="0" step="0.1" required>
+          <span id="weightIcon" class="icon"></span>
+        </div>
+      </label>
+      <label>
         Date of Birth:
         <div class="input-wrap">
           <input type="date" id="dob" required>
@@ -82,6 +110,12 @@
         /[^A-Za-z0-9]/.test(pw)
       );
     }
+    function validateTextField(val) {
+      return val.trim().length > 0;
+    }
+    function validateWeight(val) {
+      return val !== "" && !isNaN(val) && Number(val) > 0;
+    }
     function setValidation(input, icon, valid) {
       input.classList.remove('valid', 'invalid');
       icon.classList.remove('valid', 'invalid');
@@ -108,6 +142,15 @@
     const heightIcon = document.getElementById("heightIcon");
     const passwordIcon = document.getElementById("passwordIcon");
 
+    const fatherNameInput = document.getElementById("fatherName");
+    const motherNameInput = document.getElementById("motherName");
+    const qualificationInput = document.getElementById("qualification");
+    const weightInput = document.getElementById("weight");
+    const fatherNameIcon = document.getElementById("fatherNameIcon");
+    const motherNameIcon = document.getElementById("motherNameIcon");
+    const qualificationIcon = document.getElementById("qualificationIcon");
+    const weightIcon = document.getElementById("weightIcon");
+
     nameInput.addEventListener("input", () => {
       setValidation(nameInput, nameIcon, validateName(nameInput.value));
     });
@@ -121,21 +164,40 @@
       setValidation(passwordInput, passwordIcon, validatePassword(passwordInput.value));
     });
 
+    fatherNameInput.addEventListener("input", () => {
+      setValidation(fatherNameInput, fatherNameIcon, validateTextField(fatherNameInput.value));
+    });
+    motherNameInput.addEventListener("input", () => {
+      setValidation(motherNameInput, motherNameIcon, validateTextField(motherNameInput.value));
+    });
+    qualificationInput.addEventListener("input", () => {
+      setValidation(qualificationInput, qualificationIcon, validateTextField(qualificationInput.value));
+    });
+    weightInput.addEventListener("input", () => {
+      setValidation(weightInput, weightIcon, validateWeight(weightInput.value));
+    });
+
     document.getElementById("bioForm").addEventListener("submit", function(e){
       const valid =
         validateName(nameInput.value) &&
         validateDOB(dobInput.value) &&
         validateHeight(heightInput.value) &&
-        validatePassword(passwordInput.value);
+        validatePassword(passwordInput.value) &&
+        validateTextField(fatherNameInput.value) &&
+        validateTextField(motherNameInput.value) &&
+        validateTextField(qualificationInput.value) &&
+        validateWeight(weightInput.value);
       setValidation(nameInput, nameIcon, validateName(nameInput.value));
       setValidation(dobInput, dobIcon, validateDOB(dobInput.value));
       setValidation(heightInput, heightIcon, validateHeight(heightInput.value));
       setValidation(passwordInput, passwordIcon, validatePassword(passwordInput.value));
+      setValidation(fatherNameInput, fatherNameIcon, validateTextField(fatherNameInput.value));
+      setValidation(motherNameInput, motherNameIcon, validateTextField(motherNameInput.value));
+      setValidation(qualificationInput, qualificationIcon, validateTextField(qualificationInput.value));
+      setValidation(weightInput, weightIcon, validateWeight(weightInput.value));
       if (!valid) {
         e.preventDefault();
         alert("Please fill all fields correctly.");
       }
     });
   </script>
-</body>
-</html>
