@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Harvard-like University</title>
+<style>
+ /* Reset */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background: #fff;
+  color: #333;
+}
+
+/* Fixed header */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: #a51c30; /* Harvard Crimson */
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 1001;
+  color: white;
+  font-weight: 700;
+  font-size: 1.3rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+/* Burger button on right */
+.burger {
+  margin-left: auto;
+  width: 32px;
+  height: 26px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+.burger:hover {
+  opacity: 0.85;
+}
+.burger div {
+  height: 4px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Nav sliding down from top */
+nav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background: #a51c30;
+  color: white;
+  padding: 20px 40px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  max-height: 0;
+  overflow: hidden;
+  font-weight: 500;
+  font-size: 1.1rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: max-height 0.4s ease, opacity 0.3s ease 0.1s, transform 0.3s ease;
+  z-index: 1000;
+}
+nav.open {
+  max-height: 300px; /* enough height to show all links */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Nav list styling */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+nav li {
+  margin: 0;
+}
+nav li a {
+  color: white;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background-color 0.25s ease;
+  font-weight: 600;
+}
+nav li a:hover,
+nav li a:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+/* Main content */
+main {
+  padding: 100px 24px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Sections */
+section {
+  margin-bottom: 70px;
+}
+section h2 {
+  border-bottom: 3px solid #a51c30;
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+  font-family: 'Georgia', serif;
+  color: #a51c30;
+  font-weight: 700;
+  font-size: 1.9rem;
+  letter-spacing: 1.1px;
+}
+section p {
+  line-height: 1.7;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+/* Responsive: stack nav links vertically on small screens */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+  nav {
+    padding: 20px 16px;
+    max-height: 350px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  Harvard University
+  <div class="burger" id="burgerBtn" aria-label="Toggle navigation" role="button" tabindex="0">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</header>
+
+<nav id="navMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#teachers">Teachers</a></li>
+    <li><a href="#campus-life">Campus Life</a></li>
+    <li><a href="#academics">Academics</a></li>
+    <li><a href="#admissions">Admissions</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="teachers">
+    <h2>Teachers</h2>
+    <p>Our faculty members are world-renowned scholars and dedicated educators who inspire students to achieve excellence.</p>
+  </section>
+
+  <section id="campus-life">
+    <h2>Campus Life</h2>
+    <p>Experience a vibrant community with diverse activities, cultural events, and facilities that foster growth beyond academics.</p>
+  </section>
+
+  <section id="academics">
+    <h2>Academics</h2>
+    <p>Offering a rigorous curriculum across various disciplines, Harvard empowers students to challenge ideas and explore new knowledge.</p>
+  </section>
+
+  <section id="admissions">
+    <h2>Admissions</h2>
+    <p>Learn about the application process, requirements, and how to join the Harvard community.</p>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+    <p>Our research initiatives push the boundaries of discovery in science, technology, humanities, and social sciences.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Get in touch with our offices for more information or assistance.</p>
+  </section>
+</main>
+
+<script>
+  const burgerBtn = document.getElementById('burgerBtn');
+  const navMenu = document.getElementById('navMenu');
+
+  burgerBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+    // Toggle aria attribute for accessibility
+    const isOpen = navMenu.classList.contains('open');
+    navMenu.setAttribute('aria-hidden', !isOpen);
+  });
+
+  // Optional: close nav if user clicks outside nav or presses escape
+  document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+      navMenu.classList.remove('open');
+      navMenu.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      navMenu.classList.remove('open');
+      navMenu.setAttribute('aria-hidden', 'true');
+    }
+  });
+</script>
+
+</body>
+</html>
