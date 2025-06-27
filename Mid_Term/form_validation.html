@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Form Validation</title>
+</head>
+<body>
+
+<h2>Signup Form</h2>
+
+<form onsubmit="return validateForm()">
+  <label>Name:</label><br>
+  <input type="text" id="name"><br><br>
+
+  <label>Email:</label><br>
+  <input type="text" id="email"><br><br>
+
+  <input type="submit" value="Submit">
+</form>
+
+<p id="error" style="color:red;"></p>
+
+<script>
+  function validateForm() {
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let errorMsg = "";
+
+    if (name === "") {
+      errorMsg = "Name is required.";
+    } else if (email === "") {
+      errorMsg = "Email is required.";
+    } else if (!email.includes("@") || !email.includes(".")) {
+      errorMsg = "Enter a valid email.";
+    }
+
+    if (errorMsg !== "") {
+      document.getElementById("error").innerText = errorMsg;
+      return false; // prevent form from submitting
+    }
+
+    return true; // allow form to submit
+  }
+</script>
+
+</body>
+</html>

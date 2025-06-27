@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Array with getElementById</title>
+</head>
+<body>
+
+<h2>Enter a value and add it to the array</h2>
+
+<input type="text" id="userInput" placeholder="Type something" />
+<button onclick="addToArray()">Add</button>
+
+<p>Current Array: <span id="result"></span></p>
+
+<script>
+  let myArray = [];
+
+  function addToArray() {
+    let input = document.getElementById("userInput").value;
+    
+    if (input !== "") {
+      myArray.push(input); // Add input to array
+      document.getElementById("result").innerHTML = myArray.join(", ");
+      document.getElementById("userInput").value = ""; // Clear input box
+    } else {
+      alert("Input is empty!");
+    }
+  }
+</script>
+
+</body>
+</html>
