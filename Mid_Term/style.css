@@ -1,0 +1,66 @@
+/* This is a comment in CSS */
+
+/* Universal Selector - affects all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body style */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Header style */
+h1 {
+  color: #0055ff;
+  text-align: center;
+}
+
+/* Paragraph style */
+p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Button style */
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Navigation bar */
+nav {
+  background-color: #333;
+  padding: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #222;
+  color: #fff;
+  margin-top: 30px;
+}
