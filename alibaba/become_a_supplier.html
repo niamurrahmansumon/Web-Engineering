@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alibaba Supplier Sign Up</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body, html {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left {
+  flex: 1;
+  background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') center/cover no-repeat;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  color: white;
+  max-width: 80%;
+}
+
+.overlay h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.flag {
+  width: 16px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.right {
+  flex: 1;
+  padding: 60px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.location {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.socials img {
+  width: 40px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.divider {
+  margin: 20px 0;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #666;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="email"],
+input[type="password"],
+.name-fields input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.name-fields {
+  display: flex;
+  gap: 10px;
+}
+
+.slider {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+  color: #999;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.agreement {
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.agreement a {
+  color: #0073e6;
+  text-decoration: none;
+}
+
+button {
+  background-color: #0366d6;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #024ea2;
+}
+
+.signin {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.signin a {
+  color: #0366d6;
+  text-decoration: none;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <div class="overlay">
+        <h2>"In just 1 year, LTA International generated 14 new customers with new sales growth totaling $1.5 million."</h2>
+        <p><img src="https://flagcdn.com/us.svg" alt="US" class="flag" /> Andrea Vitiello<br>LTA Internacional, Fundador</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <h2>Sign up as a supplier</h2>
+      <p class="location">Company location: <img src="https://flagcdn.com/bd.svg" class="flag" alt="BD"> Bangladesh</p>
+      
+      <div class="socials">
+        <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google" />
+        <img src="https://img.icons8.com/color/48/facebook-new.png" alt="Facebook" />
+        <img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn" />
+      </div>
+
+      <div class="divider">Or</div>
+
+      <form>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <div class="name-fields">
+          <input type="text" placeholder="First name" required />
+          <input type="text" placeholder="Last name" required />
+        </div>
+        <div class="slider">
+          <span>➡ Please slide to verify</span>
+        </div>
+        <label class="agreement">
+          <input type="checkbox" required />
+          I agree to the <a href="#">Free Membership Agreement</a>, <a href="#">Terms of Use</a>, and <a href="#">Privacy Policy</a>.
+        </label>
+        <button type="submit">Create account</button>
+        <p class="signin">Already have an account? <a href="#">Sign in</a></p>
+      </form>
+    </div>
+  </div>
+  <script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+      const email = this.querySelector('input[type="email"]');
+      const password = this.querySelector('input[type="password"]');
+      const firstName = this.querySelector('.name-fields input[placeholder="First name"]');
+      const lastName = this.querySelector('.name-fields input[placeholder="Last name"]');
+      const agreement = this.querySelector('.agreement input[type="checkbox"]');
+      let valid = true;
+      let messages = [];
+
+      // Email validation
+      if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        valid = false;
+        messages.push('Please enter a valid email address.');
+      }
+
+      // Password validation
+      if (password.value.length < 8 ) {
+        valid = false;
+        messages.push('Password must be at least 8 characters.');
+      }
+
+      // Name validation
+      if (!firstName.value.trim()) {
+        valid = false;
+        messages.push('First name is required.');
+      }
+      if (!lastName.value.trim()) {
+        valid = false;
+        messages.push('Last name is required.');
+      }
+
+      // Agreement checkbox
+      if (!agreement.checked) {
+        valid = false;
+        messages.push('You must agree to the terms.');
+      }
+
+      if (!valid) {
+        e.preventDefault();
+        alert(messages.join('\n'));
+      }
+    });
+</script>
+</body>
+</html>

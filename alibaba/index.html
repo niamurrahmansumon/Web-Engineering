@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alibaba</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      background-color: rgb(45,25,11);
+      color: white;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Header / navbar */
+    header {
+      width: 100%;
+      background: transparent;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: white;
+    }
+
+    .header-left,
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: nowrap;
+    }
+
+    .header-left {
+      flex: 1 1 auto;
+      min-width: 300px;
+      gap: 1.5rem;
+    }
+
+    .header-left .logo-text {
+      font-weight: 700;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+      font-style: italic;
+      user-select: none;
+    }
+
+    .header-left .logo-text span {
+      color: white;
+      font-weight: 700;
+    }
+
+    .header-left .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-weight: 400;
+    }
+
+    .header-left .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Right header */
+    .header-right {
+      font-weight: 400;
+      gap: 1.25rem;
+      justify-content: flex-end;
+      flex-wrap: nowrap;
+      min-width: 350px;
+      font-size: 0.95rem;
+    }
+
+    .header-right a,
+    .header-right button {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      height: 28px;
+      font-weight: 500;
+      transition: background-color 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .header-right a {
+      color: white;
+      background-color: transparent;
+      border: none;
+      user-select: none;
+    }
+
+    .header-right a:hover {
+      text-decoration: underline;
+      background-color: rgba(255 255 255 / 0.1);
+    }
+
+    .header-right .btn-create-account {
+      background-color: #ff6200;
+      color: white;
+      font-weight: 700;
+      padding: 0.3rem 1.2rem;
+    }
+
+    .header-right .btn-create-account:hover {
+      background-color: #e55a00;
+      color: white;
+    }
+
+    .header-right .icon {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      fill: white;
+      pointer-events: none;
+    }
+
+    /* Delivery & language combo */
+    .header-right .delivery-language {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 4px 0 4px;
+      font-size: 13px;
+    }
+
+    .header-right .flag-circle {
+      width: 18px;
+      height: 14px;
+      border-radius: 3px;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 550px;
+      padding: 7rem 3rem 3rem 3rem;
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.65),
+          rgba(0, 0, 0, 0.65)
+        ),
+        url("https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6f28abe2-6723-43ca-bb3c-3ebc4ccedab4.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 2280px;
+      margin: 0 auto;
+      color: white;
+    }
+
+    .hero .learn-about {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-size: 14px;
+      color: white;
+      gap: 10px;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero .learn-about svg {
+      width: 16px;
+      height: 16px;
+      fill: white;
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-weight: 800;
+      font-size: 2.65rem;
+      line-height: 1.2;
+      max-width: 650px;
+      margin-bottom: 1em;
+    }
+
+    /* Search bar container */
+    .search-bar {
+      max-width: 650px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .search-bar input[type="text"] {
+      flex-grow: 1;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      font-weight: 400;
+      border-radius: 40px;
+      border: 2px solid white;
+      outline: none;
+      color: black;
+      font-family: inherit;
+    }
+
+    /* Search camera icon */
+    .search-bar button.icon-btn {
+      background: white;
+      border: 1.8px solid white;
+      border-radius: 40px;
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      color: #ff6200;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .search-bar button.icon-btn:hover {
+      background: #e55a00;
+      color: white;
+      border-color: #e55a00;
+    }
+
+    .search-bar button.icon-btn svg {
+      width: 20px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Frequently searched */
+    .frequently-searched {
+      margin-top: 1.35rem;
+      font-size: 14px;
+      user-select: none;
+      max-width: 650px;
+    }
+
+    .frequently-searched span {
+      font-weight: 600;
+      margin-right: 1rem;
+    }
+
+    .frequently-searched .tags {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.3rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      max-width: 100%;
+      padding-bottom: 6px;
+    }
+
+    .frequently-searched .tag {
+      border: 1px solid rgba(255 255 255 / 0.7);
+      padding: 0.25rem 1rem;
+      border-radius: 25px;
+      font-size: 0.87rem;
+      white-space: nowrap;
+      color: white;
+      user-select: text;
+      transition: background-color 0.3s ease;
+    }
+
+    .frequently-searched .tag:hover {
+      background-color: rgba(255 255 255 / 0.25);
+    }
+
+    /* Bottom features container */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 3.4rem;
+      max-width: 1500px;
+      margin: 3.5rem auto 6rem auto;
+      padding: 0 1rem;
+    }
+
+    .feature-card {
+      background-color: rgba(255 255 255 / 0.04);
+      border-radius: 10px;
+      padding: 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-height: 240px;
+      box-shadow: 0 0 12px rgb(0 0 0 / 0.4);
+      color: white;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.3s ease;
+    }
+
+    .feature-card:hover {
+      background-color: rgba(255 255 255 / 0.08);
+    }
+
+    .feature-icon-wrapper {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background-color: rgba(255 255 255 / 0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      filter: grayscale(0.65);
+      transition: filter 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .feature-card:hover .feature-icon-wrapper {
+      filter: grayscale(0);
+    }
+
+    .feature-icon-wrapper svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+      user-select: none;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    .feature-desc {
+      font-weight: 400;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: rgb(255 255 255 / 0.75);
+      user-select: text;
+    }
+
+    /* Sidebar floating vertical buttons */
+    .floating-sidebar {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background-color: white;
+      border-radius: 8px 0 0 8px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.25);
+      color: #666;
+      font-size: 14px;
+      width: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      user-select: none;
+      z-index: 99;
+    }
+
+    .floating-sidebar button,
+    .floating-sidebar a {
+      text-align: center;
+      padding: 12px 8px;
+      border-bottom: 1px solid #ddd;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-weight: 600;
+      color: #444;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .floating-sidebar button:last-child,
+    .floating-sidebar a:last-child {
+      border-bottom: none;
+    }
+
+    .floating-sidebar button:hover,
+    .floating-sidebar a:hover {
+      background-color: #f26800;
+      color: white;
+    }
+
+    .floating-sidebar svg {
+      fill: currentColor;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+    }
+
+
+    /* Scrollbar hidden for frequency tag container horizontally */
+    .frequently-searched .tags::-webkit-scrollbar {
+      display: none;
+    }
+    .frequently-searched .tags {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+
+    @media (max-width: 640px) {
+      header {
+        font-size: 13px;
+        padding: 0.75rem 1rem;
+      }
+
+      .header-left .nav-links {
+        display: none;
+      }
+
+      .header-right {
+        min-width: 0;
+        gap: 1rem;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 5.5rem 1.5rem 2rem 1.5rem;
+        min-height: 450px;
+      }
+
+      .hero h1 {
+        font-size: 1.9rem;
+        max-width: 90vw;
+      }
+
+      .search-bar {
+        max-width: 100%;
+      }
+
+      .features {
+        max-width: 100%;
+        margin: 2rem 0 4rem 0;
+        padding: 0 1.3rem;
+        grid-template-columns: 1fr;
+      }
+
+      .floating-sidebar {
+        width: 70px;
+        font-size: 11px;
+      }
+      .floating-sidebar button,
+      .floating-sidebar a {
+        padding: 10px 4px;
+      }
+      .floating-sidebar svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <div class="logo-text" aria-label="Alibaba.com logo">
+        <svg
+          role="img"
+          width="28"
+          height="28"
+          aria-hidden="true"
+          focusable="false"
+          viewBox="0 0 64 64"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M32 5C45 5 52 20 52 20S42 10 30 15c-12 5-15 18-15 18s-6-11-1-19c5-7 18-9 18-9z" fill="#fff"/>
+          <path d="M19 38c-10 20-11 18-7 21 8 5 21-8 32-12 10-4 12-11 10-18-3-11-12-15-18-15-17 1-16 17-17 24z" fill="#fff"/>
+        </svg>
+        <span>Alibaba.com</span>
+      </div>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#!" tabindex="0">All categories</a>
+        <a href="#!" tabindex="0">Featured selections</a>
+        <a href="#!" tabindex="0">Order protections</a>
+        <a href="#!" tabindex="0">AI sourcing agent</a>
+        <a href="#!" tabindex="0">Buyer Central</a>
+        <a href="#!" tabindex="0">Help Center</a>
+        <a href="#!" tabindex="0">App & extension</a>
+        <a href="become_a_supplier.html" tabindex="0">Become a supplier</a>
+      </nav>
+    </div>
+
+    <div class="header-right" aria-label="User menu and navigation">
+      <a href="#!" class="delivery-language" tabindex="0" title="Deliver to Bangladesh">
+        <span class="flag-circle" aria-hidden="true">
+          <img src="https://flagcdn.com/w20/bd.png" alt="Flag Bangladesh" width="20" height="14" />
+        </span>
+        BD
+      </a>
+      <a href="#!" tabindex="0" title="Select Language and Currency">
+        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2C9.243 2 7 4.691 7 8c0 4.57 5 12 5 12s5-7.43 5-12c0-3.309-2.243-6-5-6Zm0 10c-1.104 0-2-.9-2-2s.896-2 2-2 2 .9 2 2-.896 2-2 2Z"></path></svg>
+        English-BDT
+      </a>
+      <a href="#!" tabindex="0" title="View Cart" aria-label="Go to cart">
+        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+          <path d="M7 18c-1.104 0-2 .9-2 2s.896 2 2 2 2-.9 2-2-.896-2-2-2Zm10 0c-1.104 0-2 .9-2 2s.896 2 2 2 2-.9 2-2-.896-2-2-2Zm-12-2h14.271c.89 0 1.367-1.013.868-1.733l-2.417-3.415A1.501 1.501 0 0 0 16.6 9H7v5ZM4.5 2C3.672 2 3 2.672 3 3.5S3.672 5 4.5 5 6 4.328 6 3.5 5.328 2 4.5 2ZM20 6h-2l-2-4H8l-2 4H4v2h16V6Z"></path>
+        </svg>
+      </a>
+      <a href="#!" tabindex="0" title="Sign In">
+        <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+          <path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-3.614 0-10 1.812-10 5.432V22h20v-3.568C22 14.812 15.614 13 12 13Z"></path>
+        </svg>
+        Sign in
+      </a>
+      <button class="btn-create-account" title="Create Account" tabindex="0" aria-label="Create an account on Alibaba">
+        Create account
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" role="banner" aria-label="Main banner - The leading B2B ecommerce platform for global trade">
+      <div class="learn-about" tabindex="0">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 17l6-5-6-5v10z"/></svg>
+        <span>Learn about Alibaba.com</span>
+      </div>
+
+      <h1 tabindex="0">
+        The leading B2B ecommerce platform for global trade
+      </h1>
+
+      <form class="search-bar" role="search" aria-label="Search products">
+        <input
+          type="text"
+          aria-label="Search products"
+          placeholder="women's clothing"
+          autocomplete="off"
+          spellcheck="false"
+          name="search"
+          id="searchInput"
+        />
+        <button type="submit" class="icon-btn" aria-label="Search">
+          <svg viewBox="0 0 27 18" aria-hidden="true" focusable="false" >
+            <path d="M13.7.4c2.8 0 5.8.1 7.5 1.3 3 1.9 3.1 5.2 3.1 7.2 0 2.7-.5 4.5-3.1 6.5-1.7 1.3-3.8 1.7-6.8 1.7-2.5 0-5.7-.1-7.8-1.7C.4 15.7 0 13.2 0 11.1c0-2.8 1-6.1 3-7.9S10 .4 13.7.4zM6 10.6v1.4h15.1v-1.4H6zM24.4 1.8c0-.5-.6-.7-1.1-.4l-5.6 4-.3 5.5c0 .2.3.5.6.5l.6-.1c.2 0 .3-.2.3-.4v-4.9l4.7-3.8c.3-.3.7-.5.7-.8z"/>
+          </svg>
+          Search
+        </button>
+      </form>
+
+      <div class="frequently-searched" aria-label="Frequently searched items" tabindex="0">
+        <span>Frequently searched:</span>
+        <div class="tags" role="list">
+          <span class="tag" role="listitem" tabindex="0">iphones 15 pro max</span>
+          <span class="tag" role="listitem" tabindex="0">toy box</span>
+          <span class="tag" role="listitem" tabindex="0">pakistani dress</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" aria-label="Features and business offerings">
+      <article class="feature-card" tabindex="0" aria-labelledby="title-millions" aria-describedby="desc-millions">
+        <div class="feature-icon-wrapper" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 11h4v4H4zM10 4h4v4h-4zM16 11h4v4h-4zM4 17h4v3H4zM17 17h3v3h-3z"/>
+          </svg>
+        </div>
+        <h2 class="feature-title" id="title-millions">Millions of business offerings</h2>
+        <p class="feature-desc" id="desc-millions">Explore products and suppliers for your business from millions of offerings worldwide.</p>
+      </article>
+
+      <article class="feature-card" tabindex="0" aria-labelledby="title-assured" aria-describedby="desc-assured">
+        <div class="feature-icon-wrapper" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 12l2 2 4-4"/>
+            <path d="M12 20c4.42 0 8-3.58 8-8v-1"/>
+            <path d="M4 12v-1c0-4.42 3.58-8 8-8"/>
+          </svg>
+        </div>
+        <h2 class="feature-title" id="title-assured">Assured quality and transactions</h2>
+        <p class="feature-desc" id="desc-assured">Ensure production quality from verified suppliers, with your orders protected from payment to delivery.</p>
+      </article>
+
+      <article class="feature-card" tabindex="0" aria-labelledby="title-onestop" aria-describedby="desc-onestop">
+        <div class="feature-icon-wrapper" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 12h-9"/>
+            <path d="M3 12h6"/>
+            <path d="M9 16l-4-4 4-4"/>
+          </svg>
+        </div>
+        <h2 class="feature-title" id="title-onestop">One-stop trading solution</h2>
+        <p class="feature-desc" id="desc-onestop">Order seamlessly from product/supplier search to order management, payment, and fulfillment.</p>
+      </article>
+
+      <article class="feature-card" tabindex="0" aria-labelledby="title-tailored" aria-describedby="desc-tailored">
+        <div class="feature-icon-wrapper" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 3h16v4H4zM4 9h8v12H4z"/></svg>
+        </div>
+        <h2 class="feature-title" id="title-tailored">Tailored trading experience</h2>
+        <p class="feature-desc" id="desc-tailored">Get curated benefits, such as exclusive discounts, enhanced protection, and extra support, to help grow your business every step of the way.</p>
+      </article>
+    </section>
+  </main>
+
+  <aside class="floating-sidebar" aria-label="Alibaba floating tools">
+    <button aria-label="Alibaba Lens">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.8 6h1.799v-2H18v1.198l-4.354 4.678a5.004 5.004 0 0 0-7.305 6.828l-1.399 1.39a.5.5 0 1 0 .707.707l1.401-1.402a5.004 5.004 0 0 0 7.3-6.826L17.8 6zM7 18c-1.654 0-3-1.346-3-3 0-1.653 1.346-3 3-3s3 1.347 3 3c0 1.654-1.346 3-3 3z"/></svg>
+      Alibaba Lens
+    </button>
+    <button aria-label="Survey">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm3 11h-2v5h-2v-5H9v-2h2V6h2v5h2z"/></svg>
+      Survey
+    </button>
+  </aside>
+
+  <script>
+    // Simple demonstration: Search form submit logs the input value
+    document.querySelector('.search-bar').addEventListener('submit', function(event){
+      event.preventDefault();
+      const input = this.querySelector('input[type="text"]');
+      alert('Searching for: ' + input.value.trim());
+    });
+
+    // Accessibility: add keyboard focus styles for tag spans and nav links
+    Array.from(document.querySelectorAll('.tag, .nav-links a, .header-right a')).forEach(el => {
+      el.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
