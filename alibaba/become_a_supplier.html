@@ -182,49 +182,55 @@ button:hover {
       </form>
     </div>
   </div>
-  <script>
-    document.querySelector('form').addEventListener('submit', function (e) {
-      const email = this.querySelector('input[type="email"]');
-      const password = this.querySelector('input[type="password"]');
-      const firstName = this.querySelector('.name-fields input[placeholder="First name"]');
-      const lastName = this.querySelector('.name-fields input[placeholder="Last name"]');
-      const agreement = this.querySelector('.agreement input[type="checkbox"]');
-      let valid = true;
-      let messages = [];
+  // ...existing code...
+<script>
+  document.querySelector('form').addEventListener('submit', function (e) {
+    const email = this.querySelector('input[type="email"]');
+    const password = this.querySelector('input[type="password"]');
+    const firstName = this.querySelector('.name-fields input[placeholder="First name"]');
+    const lastName = this.querySelector('.name-fields input[placeholder="Last name"]');
+    const agreement = this.querySelector('.agreement input[type="checkbox"]');
+    let valid = true;
+    let messages = [];
 
-      // Email validation
-      if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-        valid = false;
-        messages.push('Please enter a valid email address.');
-      }
+    // Email validation
+    if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      valid = false;
+      messages.push('Please enter a valid email address.');
+    }
 
-      // Password validation
-      if (password.value.length < 8 ) {
-        valid = false;
-        messages.push('Password must be at least 8 characters.');
-      }
+    // Password validation
+    if (
+      password.value.length < 8 ||
+      !password.value.match(/[A-Z]/) ||
+      !password.value.match(/[a-z]/) ||
+      !password.value.match(/[^A-Za-z0-9]/)
+    ) {
+      valid = false;
+      messages.push('Password must be at least 8 characters and include uppercase, lowercase, and a special character.');
+    }
 
-      // Name validation
-      if (!firstName.value.trim()) {
-        valid = false;
-        messages.push('First name is required.');
-      }
-      if (!lastName.value.trim()) {
-        valid = false;
-        messages.push('Last name is required.');
-      }
+    // Name validation (only letters)
+    if (!firstName.value.trim().match(/^[A-Za-z]+$/)) {
+      valid = false;
+      messages.push('First name must contain only letters.');
+    }
+    if (!lastName.value.trim().match(/^[A-Za-z]+$/)) {
+      valid = false;
+      messages.push('Last name must contain only letters.');
+    }
 
-      // Agreement checkbox
-      if (!agreement.checked) {
-        valid = false;
-        messages.push('You must agree to the terms.');
-      }
+    // Agreement checkbox
+    if (!agreement.checked) {
+      valid = false;
+      messages.push('You must agree to the terms.');
+    }
 
-      if (!valid) {
-        e.preventDefault();
-        alert(messages.join('\n'));
-      }
-    });
+    if (!valid) {
+      e.preventDefault();
+      alert(messages.join('\n'));
+    }
+  });
 </script>
 </body>
 </html>
