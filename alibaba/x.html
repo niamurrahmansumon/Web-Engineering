@@ -92,17 +92,23 @@
       border-radius: 4px;
     }
 
+    /* ✅ Password hints styling */
     .password-hints {
       font-size: 0.8rem;
-      color: #888;
       margin-bottom: 15px;
     }
-
     .password-hints p {
       margin: 4px 0;
       display: flex;
       align-items: center;
       gap: 6px;
+      color: #999; /* default gray */
+    }
+    .valid {
+      color: green;
+    }
+    .invalid {
+      color: red;
     }
 
     .name-fields {
@@ -111,7 +117,7 @@
       margin-bottom: 15px;
     }
 
-    /* SLIDE VERIFY */
+    /* ✅ SLIDE VERIFY */
     .slider-container {
       background: #eee;
       border-radius: 4px;
@@ -209,12 +215,12 @@
       <form>
         <input type="email" placeholder="Email" required />
         
-        <!-- Password Field + Hints -->
-        <input type="password" placeholder="Password" required />
+        <!-- ✅ Password Field + Dynamic Hints -->
+        <input type="password" placeholder="Password" required id="password"/>
         <div class="password-hints">
-          <p>✅ Contains 6 to 20 characters</p>
-          <p>✅ Contains letters, numbers or symbols only</p>
-          <p>✅ Contains at least two of: letters, numbers or symbols</p>
+          <p id="rule-length" class="invalid">❌ Contains 6 to 20 characters</p>
+          <p id="rule-validchars" class="invalid">❌ Contains only letters, numbers or symbols</p>
+          <p id="rule-combo" class="invalid">❌ Contains at least two of: letters, numbers, or symbols</p>
         </div>
 
         <div class="name-fields">
@@ -222,7 +228,7 @@
           <input type="text" placeholder="Last name" required />
         </div>
 
-        <!-- Slide to verify -->
+        <!-- ✅ Slide to verify -->
         <div class="slider-container" id="slider">
           <div class="slider-text">➡ Please slide to verify</div>
           <div class="slider-button">➡</div>
@@ -239,6 +245,55 @@
   </div>
 
 <script>
+  // ✅ Dynamic Password Validation
+  const passwordField = document.getElementById("password");
+  const ruleLength = document.getElementById("rule-length");
+  const ruleValidchars = document.getElementById("rule-validchars");
+  const ruleCombo = document.getElementById("rule-combo");
+
+  passwordField.addEventListener("input", () => {
+    const pwd = passwordField.value;
+
+    // Rule 1: Length 6-20
+    if (pwd.length >= 6 && pwd.length <= 20) {
+      ruleLength.textContent = "✅ Contains 6 to 20 characters";
+      ruleLength.classList.remove("invalid");
+      ruleLength.classList.add("valid");
+    } else {
+      ruleLength.textContent = "❌ Contains 6 to 20 characters";
+      ruleLength.classList.remove("valid");
+      ruleLength.classList.add("invalid");
+    }
+
+    // Rule 2: Only valid chars (letters, numbers, symbols allowed)
+    const validCharRegex = /^[A-Za-z0-9!@#$%^&*()_+\-=<>?{}[\]|.,~`]+$/;
+    if (validCharRegex.test(pwd)) {
+      ruleValidchars.textContent = "✅ Contains only letters, numbers or symbols";
+      ruleValidchars.classList.remove("invalid");
+      ruleValidchars.classList.add("valid");
+    } else {
+      ruleValidchars.textContent = "❌ Contains only letters, numbers or symbols";
+      ruleValidchars.classList.remove("valid");
+      ruleValidchars.classList.add("invalid");
+    }
+
+    // Rule 3: At least 2 of letters, numbers, symbols
+    let countTypes = 0;
+    if (/[A-Za-z]/.test(pwd)) countTypes++;
+    if (/[0-9]/.test(pwd)) countTypes++;
+    if (/[!@#$%^&*()_+\-=<>?{}[\]|.,~`]/.test(pwd)) countTypes++;
+
+    if (countTypes >= 2) {
+      ruleCombo.textContent = "✅ Contains at least two of: letters, numbers, or symbols";
+      ruleCombo.classList.remove("invalid");
+      ruleCombo.classList.add("valid");
+    } else {
+      ruleCombo.textContent = "❌ Contains at least two of: letters, numbers, or symbols";
+      ruleCombo.classList.remove("valid");
+      ruleCombo.classList.add("invalid");
+    }
+  });
+
   // ✅ Slide to Verify Logic
   const slider = document.getElementById('slider');
   const sliderBtn = slider.querySelector('.slider-button');
@@ -261,7 +316,6 @@
     if (newX > maxWidth) newX = maxWidth;
     sliderBtn.style.left = newX + 'px';
 
-    // If fully slid
     if (newX >= maxWidth) {
       sliderBtn.classList.add('slider-success');
       sliderBtn.textContent = '✔';
@@ -291,10 +345,10 @@
     }
     if (
       password.value.length < 6 || password.value.length > 20 ||
-      !password.value.match(/[A-Za-z0-9!@#$%^&*]/)
+      !/[A-Za-z0-9!@#$%^&*]/.test(password.value)
     ) {
       valid = false;
-      messages.push('Password must be 6-20 characters with letters, numbers or symbols.');
+      messages.push('Password must meet all rules.');
     }
     if (!firstName.value.trim().match(/^[A-Za-z]+$/)) {
       valid = false;
