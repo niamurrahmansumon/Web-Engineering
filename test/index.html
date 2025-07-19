@@ -1,115 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alibaba.com</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        
-        h1 {
-            color: #FF6A00;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        
-        h2 {
-            font-size: 18px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-        
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        
-        li {
-            margin-bottom: 5px;
-        }
-        
-        hr {
-            border: 0;
-            height: 1px;
-            background-color: #eee;
-            margin: 20px 0;
-        }
-        
-        .highlight {
-            font-weight: bold;
-            font-style: italic;
-        }
-        
-        .section {
-            margin-bottom: 20px;
-        }
-        
-        .feature-box {
-            margin-bottom: 15px;
-        }
-        
-        .feature-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alibaba Supplier Sign Up</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Alibaba.com</h1>
-    
-    <h2>1. All categories</h2>
-    <ul>
-        <li>Featured selections</li>
-        <li>Order protections</li>
-    </ul>
-    
-    <h3>Learn about Alibaba.com</h3>
-    <p>The leading B2B ecommerce platform for global trade</p>
-    <p class="highlight">women's clothing</p>
-    
-    <hr>
-    
-    <h3>Frequently searched:</h3>
-    <ul>
-        <li>(showns 15 pro max)</li>
-        <li>(see toy box)</li>
-        <li>(ablistami dress)</li>
-    </ul>
-    
-    <hr>
-    
-    <div class="section">
-        <div class="feature-box">
-            <div class="feature-title">Millions of business offerings</div>
-            <p>Explore products and suppliers for your business from millions of offerings worldwide.</p>
-        </div>
-        
-        <div class="feature-box">
-            <div class="feature-title">Assured quality and transactions</div>
-            <p>Ensure production quality from verified suppliers, with your orders protected from payment to delivery.</p>
-        </div>
-        
-        <div class="feature-box">
-            <div class="feature-title">One-stop trading solution</div>
-            <p>Order seamlessly from product/supplier search to order management, payment, and fulfilment.</p>
-        </div>
-        
-        <div class="feature-box">
-            <div class="feature-title">Tailored trading experience</div>
-            <p>Get curated benefits, such as exclusive discounts, enhanced protection, and extra support, to help grow your business every step of the way.</p>
-        </div>
+  <div class="container">
+    <div class="left">
+      <div class="overlay">
+        <h2>"In just 1 year, LTA International generated 14 new customers with new sales growth totaling $1.5 million."</h2>
+        <p><img src="https://flagcdn.com/us.svg" alt="US" class="flag" /> Andrea Vitiello<br>LTA Internacional, Fundador</p>
+      </div>
     </div>
 
-    <script>
-        // JavaScript can be added here for any functionality needed
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Alibaba.com page loaded');
-        });
-    </script>
+    <div class="right">
+      <h2>Sign up as a supplier</h2>
+      <p class="location">Company location: <img src="https://flagcdn.com/bd.svg" class="flag" alt="BD"> Bangladesh</p>
+      
+      <div class="socials">
+        <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google" />
+        <img src="https://img.icons8.com/color/48/facebook-new.png" alt="Facebook" />
+        <img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn" />
+      </div>
+
+      <div class="divider">Or</div>
+
+      <form>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <div class="name-fields">
+          <input type="text" placeholder="First name" required />
+          <input type="text" placeholder="Last name" required />
+        </div>
+        <div class="slider">
+          <span>➡ Please slide to verify</span>
+        </div>
+        <label class="agreement">
+          <input type="checkbox" required />
+          I agree to the <a href="#">Free Membership Agreement</a>, <a href="#">Terms of Use</a>, and <a href="#">Privacy Policy</a>.
+        </label>
+        <button type="submit">Create account</button>
+        <p class="signin">Already have an account? <a href="#">Sign in</a></p>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

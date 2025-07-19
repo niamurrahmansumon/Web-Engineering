@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body, html {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left {
+  flex: 1;
+  background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') center/cover no-repeat;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  color: white;
+  max-width: 80%;
+}
+
+.overlay h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.flag {
+  width: 16px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.right {
+  flex: 1;
+  padding: 60px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.location {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.socials img {
+  width: 40px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.divider {
+  margin: 20px 0;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #666;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="email"],
+input[type="password"],
+.name-fields input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.name-fields {
+  display: flex;
+  gap: 10px;
+}
+
+.slider {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+  color: #999;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.agreement {
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.agreement a {
+  color: #0073e6;
+  text-decoration: none;
+}
+
+button {
+  background-color: #0366d6;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #024ea2;
+}
+
+.signin {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.signin a {
+  color: #0366d6;
+  text-decoration: none;
+}
