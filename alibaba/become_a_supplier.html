@@ -245,7 +245,6 @@
   </div>
 
 <script>
-  // ✅ Dynamic Password Validation
   const passwordField = document.getElementById("password");
   const ruleLength = document.getElementById("rule-length");
   const ruleValidchars = document.getElementById("rule-validchars");
@@ -254,7 +253,6 @@
   passwordField.addEventListener("input", () => {
     const pwd = passwordField.value;
 
-    // Rule 1: Length 8-20
     if (pwd.length >= 8 && pwd.length <= 20) {
       ruleLength.textContent = "✅ Contains 8 to 20 characters";
       ruleLength.classList.remove("invalid");
@@ -265,7 +263,6 @@
       ruleLength.classList.add("invalid");
     }
 
-    // Rule 2: Only valid chars (letters, numbers, symbols allowed)
     const validCharRegex = /^[A-Za-z0-9!@#$%^&*()_+\-=<>?{}[\]|.,~`]+$/;
     if (validCharRegex.test(pwd)) {
       ruleValidchars.textContent = "✅ Contains only letters, numbers or symbols";
@@ -277,7 +274,6 @@
       ruleValidchars.classList.add("invalid");
     }
 
-    // Rule 3: At least 2 of letters, numbers, symbols
     let countTypes = 0;
     if (/[A-Za-z]/.test(pwd)) countTypes++;
     if (/[0-9]/.test(pwd)) countTypes++;
@@ -294,7 +290,6 @@
     }
   });
 
-  // ✅ Slide to Verify Logic
   const slider = document.getElementById('slider');
   const sliderBtn = slider.querySelector('.slider-button');
   const sliderText = slider.querySelector('.slider-text');
