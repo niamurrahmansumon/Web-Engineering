@@ -1,29 +1,1138 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-US">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <link rel="pingback" href="https://dropshop.com.bd/xmlrpc.php">
 
-    <div id="myDIV" class="header">
-      <h2>My To-Do List</h2>
-      <input type="text" id="myInput" placeholder="Title...">
-      <span onclick="newElement()" class="addBtn">Add</span>
+    <title>DropShop 2.5 | Drop Shipping Platform in Bangladesh</title>
+    <meta name='robots' content='max-image-preview:large' />
+    <link rel='dns-prefetch' href='//www.googletagmanager.com' />
+    <link rel="alternate" type="application/rss+xml" title="DropShop 2.5 | Drop Shipping Platform in Bangladesh &raquo; Feed" href="https://dropshop.com.bd/feed/" />
+    <link rel="alternate" type="application/rss+xml" title="DropShop 2.5 | Drop Shipping Platform in Bangladesh &raquo; Comments Feed" href="https://dropshop.com.bd/comments/feed/" />
+    
+    <!-- External CSS files -->
+    <link rel='stylesheet' id='woo-conditional-shipping-blocks-style-css' href='https://dropshop.com.bd/wp-content/plugins/conditional-shipping-for-woocommerce/frontend/css/woo-conditional-shipping.css?ver=3.2.0.free' type='text/css' media='all' />
+    <link rel='stylesheet' id='commercekit-ajax-search-css-css' href='https://dropshop.com.bd/wp-content/plugins/commercegurus-commercekit/assets/css/ajax-search.css?ver=2.3.0.1' type='text/css' media='all' />
+    <link rel='stylesheet' id='disable-payment-method-for-woocommerce-css' href='https://dropshop.com.bd/wp-content/plugins/disable-payment-method-for-woocommerce-pro/public/css/style.css?ver=6.8.1' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/css/front.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='chosen-drop-down-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/js/chosen/chosen.min.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='icheck-jquery-color-flat-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/js/icheck/skins/flat/_all.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='icheck-jquery-color-square-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/js/icheck/skins/square/_all.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='icheck-jquery-color-minimal-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/js/icheck/skins/minimal/_all.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof_by_author_html_items-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/by_author/css/by_author.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof_by_instock_html_items-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/by_instock/css/by_instock.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof_by_onsales_html_items-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/by_onsales/css/by_onsales.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof_by_text_html_items-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/by_text/assets/css/front.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof_label_html_items-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/label/css/html_types/label.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof_select_radio_check_html_items-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/select_radio_check/css/html_types/select_radio_check.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof_sd_html_items_checkbox-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/smart_designer/css/elements/checkbox.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof_sd_html_items_radio-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/smart_designer/css/elements/radio.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof_sd_html_items_switcher-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/smart_designer/css/elements/switcher.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof_sd_html_items_color-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/smart_designer/css/elements/color.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof_sd_html_items_tooltip-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/smart_designer/css/tooltip.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof_sd_html_items_front-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/smart_designer/css/front.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woof-switcher23-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/css/switcher.css?ver=1.3.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='woo_conditional_shipping_css-css' href='https://dropshop.com.bd/wp-content/plugins/conditional-shipping-for-woocommerce/includes/frontend/../../frontend/css/woo-conditional-shipping.css?ver=3.2.0.free' type='text/css' media='all' />
+    <link rel='stylesheet' id='select2-css' href='https://dropshop.com.bd/wp-content/plugins/woocommerce/assets/css/select2.css?ver=8.8.5' type='text/css' media='all' />
+    <link rel='stylesheet' id='salesking_main_style-css' href='https://dropshop.com.bd/wp-content/plugins/salesking-ultimate-sales-team-agents-reps-plugin-for-woocommerce/public/../includes/assets/css/style.css?ver=1714034673' type='text/css' media='all' />
+    <link rel='stylesheet' id='dataTables-css' href='https://dropshop.com.bd/wp-content/plugins/salesking-ultimate-sales-team-agents-reps-plugin-for-woocommerce/public/../includes/assets/lib/dataTables/jquery.dataTables.min.css?ver=6.8.1' type='text/css' media='all' />
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" id="shoptimizer-main-min-preload-css" href="https://dropshop.com.bd/wp-content/themes/shoptimizer/assets/css/main/main.min.css?ver=2.7.6" type="text/css" media="all" /><noscript><link rel='stylesheet' id='shoptimizer-main-min-css' href='https://dropshop.com.bd/wp-content/themes/shoptimizer/assets/css/main/main.min.css?ver=2.7.6' type='text/css' media='all' />
+</noscript>
+    <link rel='stylesheet' id='shoptimizer-modal-min-css' href='https://dropshop.com.bd/wp-content/themes/shoptimizer/assets/css/main/modal.min.css?ver=2.7.6' type='text/css' media='all' />
+    <link rel='stylesheet' id='shoptimizer-dynamic-style-css' href='https://dropshop.com.bd/wp-content/themes/shoptimizer/assets/css/main/dynamic.css?ver=2.7.6' type='text/css' media='all' />
+    <link rel='stylesheet' id='shoptimizer-blocks-min-css' href='https://dropshop.com.bd/wp-content/themes/shoptimizer/assets/css/main/blocks.min.css?ver=2.7.6' type='text/css' media='all' />
+    <link rel='stylesheet' id='elementor-frontend-css' href='https://dropshop.com.bd/wp-content/plugins/elementor/assets/css/frontend-lite.min.css?ver=3.21.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='swiper-css' href='https://dropshop.com.bd/wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min.css?ver=8.4.5' type='text/css' media='all' />
+    <link rel='stylesheet' id='elementor-post-218893-css' href='https://dropshop.com.bd/wp-content/uploads/elementor/css/post-218893.css?ver=1714844928' type='text/css' media='all' />
+    <link rel='stylesheet' id='font-awesome-css' href='https://dropshop.com.bd/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='wpdt-elementor-widget-font-css' href='https://dropshop.com.bd/wp-content/plugins/wpdatatables/integrations/page_builders/elementor/css/style.css?ver=6.3.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='elementor-post-101856-css' href='https://dropshop.com.bd/wp-content/uploads/elementor/css/post-101856.css?ver=1714845112' type='text/css' media='all' />
+    <link rel='stylesheet' id='shoptimizer-woocommerce-min-css' href='https://dropshop.com.bd/wp-content/themes/shoptimizer/assets/css/main/woocommerce.min.css?ver=2.7.6' type='text/css' media='all' />
+    <link rel='stylesheet' id='happy-icons-css' href='https://dropshop.com.bd/wp-content/plugins/happy-elementor-addons/assets/fonts/style.min.css?ver=3.10.7' type='text/css' media='all' />
+    <link rel='stylesheet' id='slick-css' href='https://dropshop.com.bd/wp-content/plugins/happy-elementor-addons/assets/vendor/slick/slick.css?ver=3.10.7' type='text/css' media='all' />
+    <link rel='stylesheet' id='slick-theme-css' href='https://dropshop.com.bd/wp-content/plugins/happy-elementor-addons/assets/vendor/slick/slick-theme.css?ver=3.10.7' type='text/css' media='all' />
+    <link rel='stylesheet' id='happy-elementor-addons-101856-css' href='https://dropshop.com.bd/wp-content/uploads/happyaddons/css/ha-101856.css?ver=3.10.7.1714866709' type='text/css' media='all' />
+    <link rel='stylesheet' id='google-fonts-1-css' href='https://dropshop.com.bd/wp-content/uploads/breeze/google/fonts/roboto/roboto.css' type='text/css' media='all' />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+    <meta name="generator" content="Elementor 3.21.3; features: e_optimized_assets_loading, e_optimized_css_loading, e_font_icon_svg, additional_custom_breakpoints, e_lazyload; settings: css_print_method-external, google_font-enabled, font_display-swap">
+    <link rel="icon" href="https://dropshop.com.bd/wp-content/uploads/2024/04/cropped-File1-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://dropshop.com.bd/wp-content/uploads/2024/04/cropped-File1-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://dropshop.com.bd/wp-content/uploads/2024/04/cropped-File1-180x180.png" />
+    <meta name="msapplication-TileImage" content="https://dropshop.com.bd/wp-content/uploads/2024/04/cropped-File1-270x270.png" />
+</head>
+
+<body class="home wp-singular page-template page-template-elementor_header_footer page page-id-101856 wp-custom-logo wp-theme-shoptimizer theme-shoptimizer woocommerce-no-js salesking_not_agent salesking_not_shopping_as_customer no-breadcrumbs pdp-ajax sticky-m sticky-d m-search-bh m-grid-2 pdp-full right-archives-sidebar right-page-sidebar wc-active product-align-left elementor-default elementor-template-full-width elementor-kit-218893 elementor-page elementor-page-101856">
+
+
+    <div class="mobile-menu close-drawer">
+        <span aria-hidden="true">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+				</span>
+    </div>
+    <div id="page" class="hfeed site">
+
+        <a class="skip-link screen-reader-text" href="#site-navigation">Skip to navigation</a>
+        <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+        <div tabindex="-1" id="shoptimizerCartDrawer" class="shoptimizer-mini-cart-wrap" role="dialog" aria-label="Cart drawer">
+            <div id="ajax-loading">
+                <div class="shoptimizer-loader">
+                    <div class="spinner">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-drawer-heading">Your Cart</div>
+            <button type="button" aria-label="Close drawer" class="close-drawer">
+				<span aria-hidden="true">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+				</span>
+			</button>
+
+            <div class="widget woocommerce widget_shopping_cart">
+                <div class="widget_shopping_cart_content"></div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="col-full topbar-wrapper hide-on-mobile">
+
+            <div class="top-bar">
+                <div class="col-full">
+                    <div class="top-bar-center  widget_text">
+                        <div class="textwidget">
+                            <p>Call for Support: 09648500500</p>
+                        </div>
+                    </div>
+                    <div class="top-bar-right  widget_text">
+                        <div class="textwidget">
+                            <p><strong><a style="color: yellow;" href="/register-as-dropship/">Join As a Dropshipper</a></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <header id="masthead" class="site-header">
+
+            <div class="menu-overlay"></div>
+
+            <div class="main-header col-full">
+
+                <div class="site-branding">
+                    <button class="menu-toggle" aria-label="Menu" aria-controls="site-navigation" aria-expanded="false">
+				<span class="bar"></span><span class="bar"></span><span class="bar"></span>
+								<span class="bar-text">MENU</span>
+					
+			</button>
+                    <a href="https://dropshop.com.bd/" class="custom-logo-link"><img loading="lazy" width="1038" height="202" src="https://dropshop.com.bd/wp-content/uploads/2024/09/DropSHOP-LOGO-TM-1.png" class="custom-logo" alt="DropShop 2.5 | Drop Shipping Platform in Bangladesh" srcset="https://dropshop.com.bd/wp-content/uploads/2024/09/DropSHOP-LOGO-TM-1.png 1038w, https://dropshop.com.bd/wp-content/uploads/2024/09/DropSHOP-LOGO-TM-1-300x58.png 300w, https://dropshop.com.bd/wp-content/uploads/2024/09/DropSHOP-LOGO-TM-1-1024x199.png 1024w, https://dropshop.com.bd/wp-content/uploads/2024/09/DropSHOP-LOGO-TM-1-768x149.png 768w, https://dropshop.com.bd/wp-content/uploads/2024/09/DropSHOP-LOGO-TM-1-990x193.png 990w, https://dropshop.com.bd/wp-content/uploads/2024/09/DropSHOP-LOGO-TM-1-441x86.png 441w, https://dropshop.com.bd/wp-content/uploads/2024/09/DropSHOP-LOGO-TM-1-800x156.png 800w, https://dropshop.com.bd/wp-content/uploads/2024/09/DropSHOP-LOGO-TM-1-150x29.png 150w" sizes="(max-width: 360px) 147px, (max-width: 1038px) 100vw, 1038px" /></a>                    </div>
+
+
+                <div class="site-search">
+
+                    <div class="widget woocommerce widget_product_search">
+                        <form role="search" method="get" class="woocommerce-product-search" action="https://dropshop.com.bd/">
+                            <label class="screen-reader-text" for="woocommerce-product-search-field-0">Search for:</label>
+                            <input type="search" id="woocommerce-product-search-field-0" class="search-field" placeholder="Search products..." value="" name="s" />
+                            <button type="submit" value="Search" class="">Search</button>
+                            <input type="hidden" name="post_type" value="product" />
+                        </form>
+                    </div>
+                </div>
+                <nav class="secondary-navigation" aria-label="Secondary Navigation">
+                    <div class="menu-secondary-menu-container">
+                        <ul id="menu-secondary-menu" class="menu">
+                            <li id="menu-item-218114" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-218114"><a href="/mypanel">My Panel<div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg></div></a></li>
+                            <li id="menu-item-218115" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-218115"><a href="/help">Help Guide<div class="icon-wrapper"><svg class="svg-icon" viewBox="0 0 20 20">
+							<path d="M8.627,7.885C8.499,8.388,7.873,8.101,8.13,8.177L4.12,7.143c-0.218-0.057-0.351-0.28-0.293-0.498c0.057-0.218,0.279-0.351,0.497-0.294l4.011,1.037C8.552,7.444,8.685,7.667,8.627,7.885 M8.334,10.123L4.323,9.086C4.105,9.031,3.883,9.162,3.826,9.38C3.769,9.598,3.901,9.82,4.12,9.877l4.01,1.037c-0.262-0.062,0.373,0.192,0.497-0.294C8.685,10.401,8.552,10.18,8.334,10.123 M7.131,12.507L4.323,11.78c-0.218-0.057-0.44,0.076-0.497,0.295c-0.057,0.218,0.075,0.439,0.293,0.495l2.809,0.726c-0.265-0.062,0.37,0.193,0.495-0.293C7.48,12.784,7.35,12.562,7.131,12.507M18.159,3.677v10.701c0,0.186-0.126,0.348-0.306,0.393l-7.755,1.948c-0.07,0.016-0.134,0.016-0.204,0l-7.748-1.948c-0.179-0.045-0.306-0.207-0.306-0.393V3.677c0-0.267,0.249-0.461,0.509-0.396l7.646,1.921l7.654-1.921C17.91,3.216,18.159,3.41,18.159,3.677 M9.589,5.939L2.656,4.203v9.857l6.933,1.737V5.939z M17.344,4.203l-6.939,1.736v9.859l6.939-1.737V4.203z M16.168,6.645c-0.058-0.218-0.279-0.351-0.498-0.294l-4.011,1.037c-0.218,0.057-0.351,0.28-0.293,0.498c0.128,0.503,0.755,0.216,0.498,0.292l4.009-1.034C16.092,7.085,16.225,6.863,16.168,6.645 M16.168,9.38c-0.058-0.218-0.279-0.349-0.498-0.294l-4.011,1.036c-0.218,0.057-0.351,0.279-0.293,0.498c0.124,0.486,0.759,0.232,0.498,0.294l4.009-1.037C16.092,9.82,16.225,9.598,16.168,9.38 M14.963,12.385c-0.055-0.219-0.276-0.35-0.495-0.294l-2.809,0.726c-0.218,0.056-0.351,0.279-0.293,0.496c0.127,0.506,0.755,0.218,0.498,0.293l2.807-0.723C14.89,12.825,15.021,12.603,14.963,12.385"></path>
+						</svg></div></a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- #site-navigation -->
+
+
+
+
+                <ul class="site-header-cart menu">
+                    <li>
+                        <div class="cart-click">
+
+                            <a class="cart-contents" href="#" title="View your shopping cart">
+		
+		<span class="amount"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">৳</span>0.00</span></span>
+
+		
+		<span class="count">0</span>
+		
+		
+		
+
+		</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="s-observer"></div>
+
+            </div>
+
+
+        </header>
+        <!-- #masthead -->
+
+
+        <div class="col-full-nav">
+
+            <div class="shoptimizer-primary-navigation col-full">
+
+                <nav id="site-navigation" class="main-navigation" aria-label="Primary Navigation">
+
+
+                    <div class="primary-navigation with-logo">
+
+
+                        <div class="logo-mark">
+                            <a href="#" rel="home">
+							<img loading="lazy" src="https://dropshop.com.bd/wp-content/uploads/2023/03/DropShop-Logo.png" alt="DropShop 2.5 | Drop Shipping Platform in Bangladesh" />
+						</a>
+                        </div>
+
+
+                        <div class="menu-primary-menu-container">
+                            <ul id="menu-primary-menu" class="menu">
+                                <li id="nav-menu-item-218111" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://dropshop.com.bd/shop/" class="cg-menu-link main-menu-link"><span>All Products</span></a></li>
+                                <li id="nav-menu-item-218112" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://dropshop.com.bd/tracking/" class="cg-menu-link main-menu-link"><span>অর্ডার ট্র্যাকিং</span></a></li>
+                                <li id="nav-menu-item-218113" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://www.facebook.com/groups/DropShipBDSHOP" class="cg-menu-link main-menu-link"><span>ড্রপ-শিপিং গ্রুপ স্টাডি</span></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </nav>
+                <!-- #site-navigation -->
+                <div class="mobile-extra">
+                    <div id="text-15" class="widget widget_text">
+                        <div class="textwidget">
+                            <p>&nbsp;</p>
+                            <p><a href="/mypanel"><img decoding="async" class="alignnone wp-image-102404" src="https://dropshop.com.bd/wp-content/uploads/2023/10/Blue-Modern-Game-Button-Twitch-Panel-300x94.webp" alt="" width="211" height="66" srcset="https://dropshop.com.bd/wp-content/uploads/2023/10/Blue-Modern-Game-Button-Twitch-Panel-300x94.webp 300w, https://dropshop.com.bd/wp-content/uploads/2023/10/Blue-Modern-Game-Button-Twitch-Panel-150x47.webp 150w, https://dropshop.com.bd/wp-content/uploads/2023/10/Blue-Modern-Game-Button-Twitch-Panel.webp 320w" sizes="(max-width: 211px) 100vw, 211px" /></a></p>
+                            <p><a href="https://dropshop.com.bd/register-as-dropship/"><img decoding="async" class="alignnone wp-image-104689" src="https://dropshop.com.bd/wp-content/uploads/2023/10/register-300x94.png" alt="" width="211" height="66" srcset="https://dropshop.com.bd/wp-content/uploads/2023/10/register-300x94.png 300w, https://dropshop.com.bd/wp-content/uploads/2023/10/register-150x47.png 150w, https://dropshop.com.bd/wp-content/uploads/2023/10/register.png 320w" sizes="(max-width: 211px) 100vw, 211px" /></a></p>
+                            <p>&nbsp;</p>
+                            <p><a href="tel:09648500500 "><img decoding="async" class="alignnone wp-image-104695" src="https://dropshop.com.bd/wp-content/uploads/2023/10/call-300x94.webp" alt="" width="211" height="66" srcset="https://dropshop.com.bd/wp-content/uploads/2023/10/call-300x94.webp 300w, https://dropshop.com.bd/wp-content/uploads/2023/10/call-150x47.webp 150w, https://dropshop.com.bd/wp-content/uploads/2023/10/call.webp 320w" sizes="(max-width: 211px) 100vw, 211px" /></a></p>
+                            <p><a href="https://wa.link/94tnsq"><img loading="lazy" loading="lazy" decoding="async" class="alignnone wp-image-104698" src="https://dropshop.com.bd/wp-content/uploads/2023/10/whatsapp-300x94.webp" alt="" width="211" height="66" srcset="https://dropshop.com.bd/wp-content/uploads/2023/10/whatsapp-300x94.webp 300w, https://dropshop.com.bd/wp-content/uploads/2023/10/whatsapp-150x47.webp 150w, https://dropshop.com.bd/wp-content/uploads/2023/10/whatsapp.webp 320w" sizes="(max-width: 211px) 100vw, 211px" /></a></p>
+                            <p><a href="https://t.me/DropShop007"><img loading="lazy" loading="lazy" decoding="async" class="alignnone wp-image-104701" src="https://dropshop.com.bd/wp-content/uploads/2023/10/tele-300x94.webp" alt="" width="211" height="66" srcset="https://dropshop.com.bd/wp-content/uploads/2023/10/tele-300x94.webp 300w, https://dropshop.com.bd/wp-content/uploads/2023/10/tele-150x47.webp 150w, https://dropshop.com.bd/wp-content/uploads/2023/10/tele.webp 320w" sizes="(max-width: 211px) 100vw, 211px" /></a></p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <ul class="site-header-cart menu">
+                    <li>
+                        <div class="cart-click">
+
+                            <a class="cart-contents" href="#" title="View your shopping cart">
+		
+		<span class="amount"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">৳</span>0.00</span></span>
+
+		
+		<span class="count">0</span>
+		
+		
+		
+
+		</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="mobile-overlay"></div>
+
+
+        <div id="content" class="site-content" tabindex="-1">
+
+            <div class="shoptimizer-archive">
+
+                <div class="archive-header">
+                    <div class="col-full">
+                        <div class="woocommerce"></div>
+                    </div>
+                </div>
+
+                <div class="col-full">
+                    <div data-elementor-type="wp-page" data-elementor-id="101856" class="elementor elementor-101856">
+                        <div class="elementor-element elementor-element-2b93ff6 e-flex e-con-boxed e-con e-parent" data-id="2b93ff6" data-element_type="container" data-settings="{&quot;_ha_eqh_enable&quot;:false}">
+                            <div class="e-con-inner">
+                                <div class="elementor-element elementor-element-9be19c0 elementor-widget elementor-widget-ha-carousel happy-addon ha-carousel" data-id="9be19c0" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;5&quot;,&quot;animation_speed&quot;:300,&quot;autoplay&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:3000,&quot;loop&quot;:&quot;yes&quot;,&quot;navigation&quot;:&quot;arrow&quot;,&quot;slides_to_show_tablet&quot;:3,&quot;slides_to_show_mobile&quot;:2}"
+                                    data-widget_type="ha-carousel.default">
+                                    <div class="elementor-widget-container">
+
+                                        <div data-ha_rcc_uid="" class="hajs-slick ha-slick ha-slick--carousel">
+
+
+                                            <div class="ha-slick-slide slick-slide">
+                                                <div class="ha-slick-item">
+                                                    <img decoding="async" class="ha-slick-img" src="https://dropshop.com.bd/wp-content/uploads/2023/10/Home-Banner-Drop3-1.webp" alt="">
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="ha-slick-slide slick-slide">
+                                                <div class="ha-slick-item">
+                                                    <img decoding="async" class="ha-slick-img" src="https://dropshop.com.bd/wp-content/uploads/2023/10/Home-Banner-Drop2-1.webp" alt="">
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="ha-slick-slide slick-slide">
+                                                <div class="ha-slick-item">
+                                                    <img decoding="async" class="ha-slick-img" src="https://dropshop.com.bd/wp-content/uploads/2023/10/Home-Banner-Drop1-1.webp" alt="">
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="ha-slick-slide slick-slide">
+                                                <div class="ha-slick-item">
+                                                    <img decoding="async" class="ha-slick-img" src="https://dropshop.com.bd/wp-content/uploads/2023/10/Home-Banner-Drop8.webp" alt="">
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="ha-slick-slide slick-slide">
+                                                <div class="ha-slick-item">
+                                                    <img decoding="async" class="ha-slick-img" src="https://dropshop.com.bd/wp-content/uploads/2023/10/Home-Banner-Drop7.webp" alt="">
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="ha-slick-slide slick-slide">
+                                                <div class="ha-slick-item">
+                                                    <img decoding="async" class="ha-slick-img" src="https://dropshop.com.bd/wp-content/uploads/2023/10/Home-Banner-Drop6.webp" alt="">
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <button type="button" class="slick-prev"><svg aria-hidden="true" class="e-font-icon-svg e-fas-chevron-left" viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></svg></button>
+
+                                        <button type="button" class="slick-next"><svg aria-hidden="true" class="e-font-icon-svg e-fas-chevron-right" viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg></button>
+
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-e82d6c5 elementor-widget elementor-widget-ha-carousel happy-addon ha-carousel" data-id="e82d6c5" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;3&quot;,&quot;animation_speed&quot;:300,&quot;autoplay&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:3000,&quot;loop&quot;:&quot;yes&quot;,&quot;navigation&quot;:&quot;arrow&quot;,&quot;slides_to_show_tablet&quot;:3,&quot;slides_to_show_mobile&quot;:2}"
+                                    data-widget_type="ha-carousel.default">
+                                    <div class="elementor-widget-container">
+
+                                        <div data-ha_rcc_uid="" class="hajs-slick ha-slick ha-slick--carousel">
+
+
+                                            <div class="ha-slick-slide slick-slide">
+                                                <a class="ha-slick-item" href="https://dropshop.com.bd/product-category/best-seller/">
+													<img decoding="async" class="ha-slick-img" src="https://dropshop.com.bd/wp-content/uploads/2024/01/Hot-Selling.png" alt="">
+						
+											</a>
+                                            </div>
+
+
+                                            <div class="ha-slick-slide slick-slide">
+                                                <a class="ha-slick-item" href="https://dropshop.com.bd/product-category/ready-to-boost/">
+													<img decoding="async" class="ha-slick-img" src="https://dropshop.com.bd/wp-content/uploads/2024/01/Ready-to-Boost.png" alt="">
+						
+											</a>
+                                            </div>
+
+
+                                            <div class="ha-slick-slide slick-slide">
+                                                <a class="ha-slick-item" href="https://dropshop.com.bd/product-category/profitable-products/">
+													<img decoding="async" class="ha-slick-img" src="https://dropshop.com.bd/wp-content/uploads/2024/02/Profitable-products.png" alt="">
+						
+											</a>
+                                            </div>
+
+
+                                        </div>
+
+                                        <button type="button" class="slick-prev"><svg aria-hidden="true" class="e-font-icon-svg e-fas-chevron-left" viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></svg></button>
+
+                                        <button type="button" class="slick-next"><svg aria-hidden="true" class="e-font-icon-svg e-fas-chevron-right" viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg></button>
+
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-fbac67b elementor-widget elementor-widget-ha-carousel happy-addon ha-carousel" data-id="fbac67b" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;3&quot;,&quot;animation_speed&quot;:300,&quot;autoplay&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:3000,&quot;loop&quot;:&quot;yes&quot;,&quot;navigation&quot;:&quot;arrow&quot;,&quot;slides_to_show_tablet&quot;:3,&quot;slides_to_show_mobile&quot;:2}"
+                                    data-widget_type="ha-carousel.default">
+                                    <div class="elementor-widget-container">
+
+                                        <div data-ha_rcc_uid="" class="hajs-slick ha-slick ha-slick--carousel">
+
+
+                                            <div class="ha-slick-slide slick-slide">
+                                                <a class="ha-slick-item" href="https://dropshop.com.bd/product-category/rechargeable-fan/">
+													<img decoding="async" class="ha-slick-img" src="https://dropshop.com.bd/wp-content/uploads/2024/03/Dropshop-button13.png" alt="">
+						
+											</a>
+                                            </div>
+
+
+                                            <div class="ha-slick-slide slick-slide">
+                                                <div class="ha-slick-item">
+                                                    <img decoding="async" class="ha-slick-img" src="https://dropshop.com.bd/wp-content/uploads/2024/01/New-Arrival.png" alt="">
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="ha-slick-slide slick-slide">
+                                                <div class="ha-slick-item">
+                                                    <img decoding="async" class="ha-slick-img" src="https://dropshop.com.bd/wp-content/uploads/2024/01/Limited-Time-Offer.png" alt="">
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <button type="button" class="slick-prev"><svg aria-hidden="true" class="e-font-icon-svg e-fas-chevron-left" viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></svg></button>
+
+                                        <button type="button" class="slick-next"><svg aria-hidden="true" class="e-font-icon-svg e-fas-chevron-right" viewBox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg></button>
+
+                                    </div>
+                                </div>
+                                <div class="elementor-element elementor-element-8c42d7f ha-align-center ha-layout-inline elementor-widget elementor-widget-ha-advanced-heading happy-addon ha-advanced-heading happy-addon-pro" data-id="8c42d7f" data-element_type="widget" data-widget_type="ha-advanced-heading.default">
+                                    <div class="elementor-widget-container">
+
+                                        <h2 class="ha-advanced-heading-tag">
+                                            <a href="/shop">
+                                                <div class="ha-advanced-heading-wrap" data-background-text="">
+                                                    <span class="ha-advanced-heading-before">DropShop</span>
+                                                    <span class="ha-advanced-heading-center">Exclusive </span>
+                                                    <span class="ha-advanced-heading-after">Collections</span>
+                                                    <span class="ha-advanced-heading-border"></span>
+                                                </div>
+                                            </a>
+                                        </h2>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-2ff281e e-flex e-con-boxed e-con e-parent" data-id="2ff281e" data-element_type="container" data-settings="{&quot;_ha_eqh_enable&quot;:false}">
+                            <div class="e-con-inner">
+                                <div class="elementor-element elementor-element-8454c6c ha-pg-grid-6 ha-pg-grid-mobile-3 ha-pg-grid-tablet-2 elementor-widget elementor-widget-ha-product-category-grid-new happy-addon ha-product-category-grid-new happy-addon-pro" data-id="8454c6c" data-element_type="widget"
+                                    data-settings="{&quot;columns&quot;:&quot;6&quot;,&quot;columns_mobile&quot;:&quot;3&quot;,&quot;columns_tablet&quot;:&quot;2&quot;}" data-widget_type="ha-product-category-grid-new.default">
+                                    <div class="elementor-widget-container">
+
+                                        <div class="ha-product-cat-grid-wrapper ha-product-cat-grid-classic">
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/products.webp" alt="A-Z: All Products">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/a-z-all-products/">
+										A-Z: All Products									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (3582) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/plugins/elementor/assets/images/placeholder.png" alt="New Arrival">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/new-arrival/">
+										New Arrival									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (608) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/best-seller.webp" alt="Best Sellers">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/best-sellers/">
+										Best Sellers									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (364) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/smart-watch.webp" alt="Smartwatches">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/smartwatches/">
+										Smartwatches									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (221) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2024/03/hot-1.webp" alt="All Time Hot Selling">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/all-time-hot-selling/">
+										All Time Hot Selling									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (197) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/TWS.webp" alt="TWS">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/tws/">
+										TWS									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (191) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/Bluetooth-Speaker.webp" alt="Bluetooth Speaker">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/bluetooth-speaker/">
+										Bluetooth Speaker									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (171) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/powerbank.webp" alt="Power Bank">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/power-bank/">
+										Power Bank									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (166) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/Mouse.webp" alt="Mouse">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/mouse/">
+										Mouse									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (146) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/watch-strap.webp" alt="Watch Strap">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/watch-strap/">
+										Watch Strap									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (143) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/plugins/elementor/assets/images/placeholder.png" alt="Premium 500">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/premium500/">
+										Premium 500									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (136) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/Cable.webp" alt="Cable">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/cable/">
+										Cable									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (136) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/WiFi-Router.webp" alt="WiFi Router">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/wifi-router/">
+										WiFi Router									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (135) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/RGB-Light.png" alt="RGB Light">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/rgb-light/">
+										RGB Light									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (124) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/microphone.webp" alt="Microphone">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/microphone/">
+										Microphone									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (116) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/plugins/elementor/assets/images/placeholder.png" alt="Acrylic">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/acrylic/">
+										Acrylic									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (113) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/plugins/elementor/assets/images/placeholder.png" alt="Watches">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/watches/">
+										Watches									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (111) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/Rechargeable-Fan.webp" alt="Rechargeable Fan">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/rechargeable-fan/">
+										Rechargeable Fan									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (110) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/12/mixer.webp" alt="Kitchen Accessories">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/kitchen-accessories/">
+										Kitchen Accessories									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (107) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/Keyboard.webp" alt="Keyboard">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/keyboard/">
+										Keyboard									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (97) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/Gaming-Headphone.webp" alt="Headphone">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/headphone/">
+										Headphone									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (85) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2024/03/facebook-1.webp" alt="Ready to Boost">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/ready-to-boost/">
+										Ready to Boost									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (74) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/Neckband.webp" alt="Neckband">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/neckband/">
+										Neckband									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (72) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/Bluetooth-Headphone.webp" alt="Bluetooth Headphone">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/bluetooth-headphone/">
+										Bluetooth Headphone									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (67) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/plugins/elementor/assets/images/placeholder.png" alt="Earbuds">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/earbuds/">
+										Earbuds									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (62) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/plugins/elementor/assets/images/placeholder.png" alt="Premium 300">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/premium300/">
+										Premium 300									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (60) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <article class="ha-product-cat-grid-item  ha-product-cat-grid-has-image">
+                                                <div class="ha-product-cat-grid-item-inner">
+
+                                                    <div class="ha-product-cat-grid-thumbnail">
+                                                        <img decoding="async" src="https://dropshop.com.bd/wp-content/uploads/2023/11/tripod.webp" alt="Tripod">
+                                                    </div>
+
+                                                    <div class="ha-product-cat-grid-content">
+                                                        <div class="ha-product-cat-grid-content-inner">
+                                                            <h2 class="ha-product-cat-grid-title">
+                                                                <a href="https://dropshop.com.bd/product-category/tripod/">
+										Tripod									</a>
+                                                            </h2>
+
+                                                            <div class="ha-product-cat-grid-count">
+                                                                (44) </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <ul id="myUL">
-      <li>Hit the gym</li>
-      <li class="checked">Pay bills</li>
-      <li>Meet George</li>
-      <li>Buy eggs</li>
-      <li>Read a book</li>
-      <li>Organize office</li>
-    </ul>
+    <!-- External JavaScript files -->
+    <script type="text/javascript" id="woocommerce-google-analytics-integration-gtag-js-after">
+        /* <![CDATA[ */
+        /* Google Analytics for WooCommerce (gtag.js) */
+        window.dataLayer = window.dataLayer || [];
 
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        // Set up default consent state.
+        for (const mode of [{
+                "analytics_storage": "denied",
+                "ad_storage": "denied",
+                "ad_user_data": "denied",
+                "ad_personalization": "denied",
+                "region": ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH"]
+            }] || []) {
+            gtag("consent", "default", mode);
+        }
+        gtag("js", new Date());
+        gtag("set", "developer_id.dOGY3NW", true);
+        gtag("config", "G-FMKPNX112H", {
+            "track_404": true,
+            "allow_google_signals": true,
+            "logged_in": false,
+            "linker": {
+                "domains": ["https:\/\/dropshop.com.bd\/"],
+                "allow_incoming": false
+            },
+            "custom_map": {
+                "dimension1": "logged_in"
+            }
+        });
+        /* ]]> */
+    </script>
+    <script type="text/javascript" id="woof-husky-js-extra">
+        /* <![CDATA[ */
+        var woof_husky_txt = {
+            "ajax_url": "https:\/\/dropshop.com.bd\/wp-admin\/admin-ajax.php",
+            "plugin_uri": "https:\/\/dropshop.com.bd\/wp-content\/plugins\/woocommerce-products-filter\/ext\/by_text\/",
+            "loader": "https:\/\/dropshop.com.bd\/wp-content\/plugins\/woocommerce-products-filter\/ext\/by_text\/assets\/img\/ajax-loader.gif",
+            "not_found": "Nothing found!",
+            "prev": "Prev",
+            "next": "Next",
+            "site_link": "https:\/\/dropshop.com.bd",
+            "default_data": {
+                "placeholder": "",
+                "behavior": "title_or_content_or_excerpt",
+                "search_by_full_word": "0",
+                "autocomplete": 1,
+                "how_to_open_links": "0",
+                "taxonomy_compatibility": "0",
+                "sku_compatibility": "1",
+                "custom_fields": "",
+                "search_desc_variant": "0",
+                "view_text_length": "10",
+                "min_symbols": "3",
+                "max_posts": "10",
+                "image": "",
+                "notes_for_customer": "",
+                "template": "",
+                "max_open_height": "300",
+                "page": 0
+            }
+        };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="https://dropshop.com.bd/wp-content/plugins/woocommerce-products-filter/ext/by_text/assets/js/husky.js?ver=1.3.5.3" id="woof-husky-js"></script>
+    <script type="text/javascript" id="breeze-prefetch-js-extra">
+        /* <![CDATA[ */
+        var breeze_prefetch = {
+            "local_url": "https:\/\/dropshop.com.bd",
+            "ignore_remote_prefetch": "1",
+            "ignore_list": ["\/cart\/", "\/checkout\/", "\/wp-admin\/"]
+        };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="https://dropshop.com.bd/wp-content/plugins/breeze/assets/js/js-front-end/breeze-prefetch-links.min.js?ver=2.1.7" id="breeze-prefetch-js"></script>
+    <script type="text/javascript" data-cfasync="false" src="https://dropshop.com.bd/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+    <script type="text/javascript" data-cfasync="false" src="https://dropshop.com.bd/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+    <script type="text/javascript" src="https://dropshop.com.bd/wp-content/plugins/disable-payment-method-for-woocommerce-pro/public/js/disable-payment-method.js?ver=1.0.49.33" id="disable-payment-method-for-woocommerce-js"></script>
+    <script type="text/javascript" src="https://dropshop.com.bd/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.8.8.5" id="jquery-blockui-js" defer="defer" data-wp-strategy="defer"></script>
+    <script type="text/javascript" id="wc-add-to-cart-js-extra">
+        /* <![CDATA[ */
+        var wc_add_to_cart_params = {
+            "ajax_url": "\/wp-admin\/admin-ajax.php",
+            "wc_ajax_url": "\/?wc-ajax=%%endpoint%%",
+            "i18n_view_cart": "View cart",
+            "cart_url": "https:\/\/dropshop.com.bd\/cart\/",
+            "is_cart": "",
+            "cart_redirect_after_add": "no"
+        };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="https://dropshop.com.bd/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=8.8.5" id="wc-add-to-cart-js" defer="defer" data-wp-strategy="defer"></script>
+    <script type="text/javascript" src="https://dropshop.com.bd/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.8.8.5" id="js-cookie-js" defer="defer" data-wp-strategy="defer"></script>
+    <script type="text/javascript" id="woocommerce-js-extra">
+        /* <![CDATA[ */
+        var woocommerce_params = {
+            "ajax_url": "\/wp-admin\/admin-ajax.php",
+            "wc_ajax_url": "\/?wc-ajax=%%endpoint%%"
+        };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="https://dropshop.com.bd/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=8.8.5" id="woocommerce-js" defer="defer" data-wp-strategy="defer"></script>
+    <script type="text/javascript" src="https://dropshop.com.bd/wp-content/plugins/conditional-shipping-for-woocommerce/includes/frontend/../../frontend/js/woo-conditional-shipping.js?ver=3.2.0.free" id="woo-conditional-shipping-js-js"></script>
+    <script type="text/javascript" src="https://dropshop.com.bd/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full.min.js?ver=1.0.9-wc.8.8.5" id="selectWoo-js" defer="defer" data-wp-strategy="defer"></script>
+    <script type="text/javascript" id="wc-country-select-js-extra">
+        /* <![CDATA[ */
+        var wc_country_select_params = {
+            "countries": "{\"BDB\":{\"Alikadam\":\"Alikadam\",\"Kalaghata\":\"Kalaghata\",\"Lama\":\"Lama\",\"Naikhong\":\"Naikhong\",\"Roanchhari\":\"Roanchhari\",\"Ruma\":\"Ruma\",\"Thanchi\":\"Thanchi\"},\"BGN\":{\"Amtoly\":\"Amtoly\",\"Bamna\":\"Bamna\",\"Barguna Sadar\":\"Barguna Sadar\",\"Betage\":\"Betage\",\"Pathor ghata\":\"Pathor ghata\",\"Taltoly\":\"Taltoly\"},\"BRS\":{\"Agailzhara\":\"Agailzhara\",\"Babuganj\":\"Babuganj\",\"Bakergonj\":\"Bakergonj\",\"Banaripara\":\"Banaripara\",\"Barisal Bandor Thana\":\"Barisal Bandor Thana\",\"Barisal Sadar\":\"Barisal Sadar\",\"Gauronodi\":\"Gauronodi\",\"Hizla\":\"Hizla\",\"Kotowali\":\"Kotowali\",\"Mahendiganj\":\"Mahendiganj\",\"Muladi\":\"Muladi\",\"Wazirpur Powrosova\":\"Wazirpur Powrosova\"},\"BHL\":{\"Bhola Sadar\":\"Bhola Sadar\",\"Burhanuddin\":\"Burhanuddin\",\"Char fashion\":\"Char fashion\",\"Dokkhin aicha\":\"Dokkhin aicha\",\"Doulatkhan\":\"Doulatkhan\",\"Lalmohon\":\"Lalmohon\",\"Tazumuddin\":\"Tazumuddin\"},\"BGR\":{\"Adamdighi\":\"Adamdighi\",\"Bogra - Gabtoli\":\"Bogra - Gabtoli\",\"Bogra Sadar\":\"Bogra Sadar\",\"Dhunat\":\"Dhunat\",\"Dupchachia\":\"Dupchachia\",\"Kahalu\":\"Kahalu\",\"Nandigram\":\"Nandigram\",\"Sariakandi\":\"Sariakandi\",\"Shajahanpur\":\"Shajahanpur\",\"Shantaher\":\"Shantaher\",\"Sherpur\":\"Sherpur\",\"Shibganj\":\"Shibganj\",\"Sonatola\":\"Sonatola\"},\"BRB\":{\"Akhaura\":\"Akhaura\",\"Asugonj\":\"Asugonj\",\"Banchharampur\":\"Banchharampur\",\"Bijoynagar\":\"Bijoynagar\",\"Brahamanbaria Sadar\":\"Brahamanbaria Sadar\",\"Kasba\":\"Kasba\",\"Nabinagar\":\"Nabinagar\",\"Nasirnagar\":\"Nasirnagar\",\"Sarail\":\"Sarail\"},\"CP\":{\"Chandpur Sadar\":\"Chandpur Sadar\",\"Faridganj\":\"Faridganj\",\"Hayemchar\":\"Hayemchar\",\"Haziganj\":\"Haziganj\",\"Kachua\":\"Kachua\",\"Matlab\":\"Matlab\",\"Matlab-Uttar\":\"Matlab-Uttar\",\"Shahrasti\":\"Shahrasti\"},\"CNG\":{\"Bholahat\":\"Bholahat\",\"Chapainawabganj Sadar\":\"Chapainawabganj Sadar\",\"Gomastapur\":\"Gomastapur\",\"Nachole\":\"Nachole\",\"Shibganj\":\"Shibganj\"},\"CTG\":{\"Akbarsha\":\"Akbarsha\",\"Anawara\":\"Anawara\",\"Andarkilla\":\"Andarkilla\",\"Anowara\":\"Anowara\",\"Bakoliya thana\":\"Bakoliya thana\",\"Bashkhali\":\"Bashkhali\",\"Bayazid\":\"Bayazid\",\"Boalkhali\":\"Boalkhali\",\"Bondor\":\"Bondor\",\"Chandanaish\":\"Chandanaish\",\"Chandgaon\":\"Chandgaon\",\"Chawkbazar(Ctg)\":\"Chawkbazar(Ctg)\",\"Chittagong-Sadar Ghat\":\"Chittagong-Sadar Ghat\",\"CTG - Lohagara\":\"CTG - Lohagara\",\"Double mooring\":\"Double mooring\",\"East Joara\":\"East Joara\",\"Enayet bazar\":\"Enayet bazar\",\"EPZ\":\"EPZ\",\"Fatikchhari\":\"Fatikchhari\",\"Halishahar\":\"Halishahar\",\"Hathazari\":\"Hathazari\",\"Karnophuli\":\"Karnophuli\",\"Keranihat\":\"Keranihat\",\"Khulshi\":\"Khulshi\",\"Kotowali Chittagong\":\"Kotowali Chittagong\",\"Mirsharai\":\"Mirsharai\",\"Nasirabad\":\"Nasirabad\",\"Nazirhat\":\"Nazirhat\",\"New Market CTG\":\"New Market CTG\",\"Pahartali\":\"Pahartali\",\"Panchlaish ctg\":\"Panchlaish ctg\",\"Patia\":\"Patia\",\"Rangunia\":\"Rangunia\",\"Raozan\":\"Raozan\",\"Sandwip\":\"Sandwip\",\"Satkaniya\":\"Satkaniya\",\"Sitakunda\":\"Sitakunda\",\"Zorarganj\":\"Zorarganj\"},\"CDG\":{\"Alamdanga\":\"Alamdanga\",\"Chuadanga Sadar\":\"Chuadanga Sadar\",\"Damurhuda\":\"Damurhuda\",\"Darshana\":\"Darshana\",\"Doulatganj\":\"Doulatganj\",\"Jiban nagar\":\"Jiban nagar\"},\"CBZ\":{\"Chakaria\":\"Chakaria\",\"Cox's bazar Sadar\":\"Cox's bazar Sadar\",\"Eidgah\":\"Eidgah\",\"Kutubdia\":\"Kutubdia\",\"Moheshkhali\":\"Moheshkhali\",\"Pakua\":\"Pakua\",\"Ramu\":\"Ramu\",\"Teknaf\":\"Teknaf\",\"Ukhia\":\"Ukhia\"},\"CML\":{\"B.Para\":\"B.Para\",\"Barura\":\"Barura\",\"Burichang\":\"Burichang\",\"Cantonment\":\"Cantonment\",\"Chandina\":\"Chandina\",\"Chauddagram\":\"Chauddagram\",\"Comilla Companigonj\":\"Comilla Companigonj\",\"Cumilla Sadar\":\"Cumilla Sadar\",\"Daudkandi\":\"Daudkandi\",\"Devidwar\":\"Devidwar\",\"Eliotgonj\":\"Eliotgonj\",\"Gazipur Thana\":\"Gazipur Thana\",\"Gouripur\":\"Gouripur\",\"Homna\":\"Homna\",\"Kotbari\":\"Kotbari\",\"Laksam\":\"Laksam\",\"Lalmai\":\"Lalmai\",\"Megna\":\"Megna\",\"Mia-Bazar\":\"Mia-Bazar\",\"Monohorgonj\":\"Monohorgonj\",\"Muddafarganj\":\"Muddafarganj\",\"Muradnagar\":\"Muradnagar\",\"Nangolkot\":\"Nangolkot\",\"Sadar Dakkhin\":\"Sadar Dakkhin\",\"Titash\":\"Titash\"},\"DHA\":{\"Adabor\":\"Adabor\",\"Aftab Nagar\":\"Aftab Nagar\",\"Agargaon\":\"Agargaon\",\"Arambag\":\"Arambag\",\"Ashkona\":\"Ashkona\",\"Azimpur\":\"Azimpur\",\"Badda\":\"Badda\",\"Baily Road\":\"Baily Road\",\"Bakshi Bazar\":\"Bakshi Bazar\",\"Balughat\":\"Balughat\",\"Banani\":\"Banani\",\"Banani DOHS\":\"Banani DOHS\",\"Banasree\":\"Banasree\",\"Bangshal\":\"Bangshal\",\"Baridhara Diplomatic Zone\":\"Baridhara Diplomatic Zone\",\"Baridhara DOHS\":\"Baridhara DOHS\",\"Bashabo\":\"Bashabo\",\"Bashundhara R\\\/A\":\"Bashundhara R\\\/A\",\"Bawnia\":\"Bawnia\",\"Beraid\":\"Beraid\",\"Boro Moghbazar\":\"Boro Moghbazar\",\"Central Road\":\"Central Road\",\"ChawkBazar(Dhaka)\":\"ChawkBazar(Dhaka)\",\"Dakshinkhan\":\"Dakshinkhan\",\"Darussalam\":\"Darussalam\",\"Demra\":\"Demra\",\"Dhaka cantonment\":\"Dhaka cantonment\",\"Dhaka University\":\"Dhaka University\",\"Dhamrai\":\"Dhamrai\",\"Dhanmondi\":\"Dhanmondi\",\"Dholpur\":\"Dholpur\",\"DIT Road\":\"DIT Road\",\"ECB\":\"ECB\",\"Elephant Road\":\"Elephant Road\",\"Eskaton\":\"Eskaton\",\"Faidabad\":\"Faidabad\",\"Faridabad\":\"Faridabad\",\"Farmgate\":\"Farmgate\",\"Gandaria\":\"Gandaria\",\"Gopibagh\":\"Gopibagh\",\"Goran\":\"Goran\",\"Greenroad\":\"Greenroad\",\"Gulisthan\":\"Gulisthan\",\"Gulshan 1\":\"Gulshan 1\",\"Gulshan-2\":\"Gulshan-2\",\"Hatirpool\":\"Hatirpool\",\"Hazaribag\":\"Hazaribag\",\"Ibrahimpur\":\"Ibrahimpur\",\"Islampur\":\"Islampur\",\"Jatrabari\":\"Jatrabari\",\"Jigatola\":\"Jigatola\",\"Jurain\":\"Jurain\",\"Kadamtoli\":\"Kadamtoli\",\"Kafrul\":\"Kafrul\",\"Kalabagan\":\"Kalabagan\",\"Kallyanpur\":\"Kallyanpur\",\"Kamalapur\":\"Kamalapur\",\"Kamranggirchar\":\"Kamranggirchar\",\"Kathalbagan\":\"Kathalbagan\",\"Kawla\":\"Kawla\",\"Kawran Bazar\":\"Kawran Bazar\",\"Keraniganj\":\"Keraniganj\",\"Khilgaon\":\"Khilgaon\",\"Khilkhet\":\"Khilkhet\",\"Kuril\":\"Kuril\",\"Lakshmibazar\":\"Lakshmibazar\",\"Lalbag\":\"Lalbag\",\"Lalkuthi\":\"Lalkuthi\",\"Malibagh\":\"Malibagh\",\"Manda\":\"Manda\",\"Manik Nagar\":\"Manik Nagar\",\"Manikdi\":\"Manikdi\",\"Matikata\":\"Matikata\",\"Matuail\":\"Matuail\",\"Mirpur 1\":\"Mirpur 1\",\"Mirpur 10\":\"Mirpur 10\",\"Mirpur 11\":\"Mirpur 11\",\"Mirpur 12\":\"Mirpur 12\",\"Mirpur 13\":\"Mirpur 13\",\"Mirpur 14\":\"Mirpur 14\",\"Mirpur 2\":\"Mirpur 2\",\"Mirpur 6\":\"Mirpur 6\",\"Mirpur 7\":\"Mirpur 7\",\"Mirpur DOHS\":\"Mirpur DOHS\",\"Modhubag\":\"Modhubag\",\"Mogbazar\":\"Mogbazar\",\"Mohakhali\":\"Mohakhali\",\"Mohakhali DOHS\":\"Mohakhali DOHS\",\"Mohammadpur\":\"Mohammadpur\",\"Monipur\":\"Monipur\",\"Motijheel\":\"Motijheel\",\"Mugda\":\"Mugda\",\"Nadda\":\"Nadda\",\"Nakhalpara\":\"Nakhalpara\",\"Narinda\":\"Narinda\",\"Nawabpur\":\"Nawabpur\",\"Naya Bazar\":\"Naya Bazar\",\"Nazim Uddin Road\":\"Nazim Uddin Road\",\"Nazira Bazar\":\"Nazira Bazar\",\"New Elephant Road\":\"New Elephant Road\",\"New Market\":\"New Market\",\"Niketan\":\"Niketan\",\"Nikunja\":\"Nikunja\",\"Nikunja 2\":\"Nikunja 2\",\"Nilkhet\":\"Nilkhet\",\"On-demand transfer\":\"On-demand transfer\",\"Paikpara\":\"Paikpara\",\"Pallabi\":\"Pallabi\",\"Paltan\":\"Paltan\",\"Panthapath\":\"Panthapath\",\"Pirerbagh\":\"Pirerbagh\",\"Rampura\":\"Rampura\",\"Rayerbag\":\"Rayerbag\",\"Rupnagar\":\"Rupnagar\",\"Sadarghat\":\"Sadarghat\",\"Savar\":\"Savar\",\"Savar-Nabinagar\":\"Savar-Nabinagar\",\"Senpara\":\"Senpara\",\"Shahbag\":\"Shahbag\",\"Shahid Nagar\":\"Shahid Nagar\",\"Shahjadpur\":\"Shahjadpur\",\"Shajahanpur\":\"Shajahanpur\",\"Shampur\":\"Shampur\",\"Shanir Akhra\":\"Shanir Akhra\",\"Shantinagar\":\"Shantinagar\",\"Shegunbagicha\":\"Shegunbagicha\",\"Sher-e Bangla Nagar\":\"Sher-e Bangla Nagar\",\"Shewrapara\":\"Shewrapara\",\"Shiddeshwari\":\"Shiddeshwari\",\"Shyamoli\":\"Shyamoli\",\"South Banasree\":\"South Banasree\",\"Sutrapur\":\"Sutrapur\",\"Tejgaon\":\"Tejgaon\",\"Tejgaon Thana\":\"Tejgaon Thana\",\"Tolarbag\":\"Tolarbag\",\"Turag\":\"Turag\",\"Uttara Sector 1\":\"Uttara Sector 1\",\"Uttara Sector 3\":\"Uttara Sector 3\",\"Uttara Sector 4\":\"Uttara Sector 4\",\"Uttara Sector 5\":\"Uttara Sector 5\",\"Uttara Sector 6\":\"Uttara Sector 6\",\"Uttara Sector 7\":\"Uttara Sector 7\",\"Uttara Sector 8\":\"Uttara Sector 8\",\"Uttara Sector 9\":\"Uttara Sector 9\",\"Uttara Sector 10\":\"Uttara Sector 10\",\"Uttara Sector 11\":\"Uttara Sector 11\",\"Uttara Sector 12\":\"Uttara Sector 12\",\"Uttara Sector 13\":\"Uttara Sector 13\",\"Uttara Sector 14\":\"Uttara Sector 14\",\"Uttara Sector 15\":\"Uttara Sector 15\",\"Uttara Sector 16\":\"Uttara Sector 16\",\"Uttara Sector 17\":\"Uttara Sector 17\",\"Uttara Sector 2\":\"Uttara Sector 2\",\"Uttara Sector 18\":\"Uttara Sector 18\",\"Uttarkhan\":\"Uttarkhan\",\"Vatara\":\"Vatara\",\"Wari\":\"Wari\"},\"DNJ\":{\"Biral\":\"Biral\",\"Birampur\":\"Birampur\",\"Birganj\":\"Birganj\",\"Bochaganj\":\"Bochaganj\",\"Chirirbandar\":\"Chirirbandar\",\"Dinajpur Sadar\":\"Dinajpur Sadar\",\"Fulbari\":\"Fulbari\",\"Ghoraghat\":\"Ghoraghat\",\"Hakimpur (Hili)\":\"Hakimpur (Hili)\",\"Kaharol\":\"Kaharol\",\"Khanshama\":\"Khanshama\",\"Nawabganj Dinajpur\":\"Nawabganj Dinajpur\",\"Parbatipur\":\"Parbatipur\"},\"FRP\":{\"Alfadanga\":\"Alfadanga\",\"Bhanga\":\"Bhanga\",\"Boalmari\":\"Boalmari\",\"Charbhadrashan\":\"Charbhadrashan\",\"Faridpur Sadar\":\"Faridpur Sadar\",\"Madukhali\":\"Madukhali\",\"Nagarkanda\":\"Nagarkanda\",\"Sadarpur\":\"Sadarpur\",\"Saltha\":\"Saltha\"},\"FEN\":{\"Chhagalnaiya\":\"Chhagalnaiya\",\"Daganbhuiyan\":\"Daganbhuiyan\",\"Feni Sadar\":\"Feni Sadar\",\"Ful-Gazi\":\"Ful-Gazi\",\"Pashuram\":\"Pashuram\",\"Sonagazi\":\"Sonagazi\"},\"GBD\":{\"Fulchhari\":\"Fulchhari\",\"Gaibandha Sadar\":\"Gaibandha Sadar\",\"Gobindaganj\":\"Gobindaganj\",\"Palashbari\":\"Palashbari\",\"Sadulllahpur\":\"Sadulllahpur\",\"Saghata\":\"Saghata\",\"Sundarganj\":\"Sundarganj\"},\"GZP\":{\"Bason\":\"Bason\",\"Board Bazar\":\"Board Bazar\",\"Borobari\":\"Borobari\",\"College gate\":\"College gate\",\"Gacha\":\"Gacha\",\"Gazipur Chowrasta\":\"Gazipur Chowrasta\",\"Gazipura\":\"Gazipura\",\"Hotapara\":\"Hotapara\",\"Joydebpur\":\"Joydebpur\",\"Kaliganj\":\"Kaliganj\",\"Kapashiya\":\"Kapashiya\",\"Kashimpur\":\"Kashimpur\",\"Mawna\":\"Mawna\",\"Mowchak\":\"Mowchak\",\"Sreepur\":\"Sreepur\",\"Tongi\":\"Tongi\",\"Tongi Cherag Ali\":\"Tongi Cherag Ali\"},\"GPL\":{\"Gopalganj Sadar\":\"Gopalganj Sadar\",\"Kashiani\":\"Kashiani\",\"Kotalipara\":\"Kotalipara\",\"Muksudpur\":\"Muksudpur\",\"Tungipara\":\"Tungipara\"},\"HBN\":{\"Azmireeganj\":\"Azmireeganj\",\"Bahubal\":\"Bahubal\",\"Baniachong\":\"Baniachong\",\"Chunarughat\":\"Chunarughat\",\"Habiganj Sadar\":\"Habiganj Sadar\",\"Lakhai\":\"Lakhai\",\"Madhabpur\":\"Madhabpur\",\"Nabiganj\":\"Nabiganj\"},\"JMP\":{\"Bakshiganj\":\"Bakshiganj\",\"Dewangonj\":\"Dewangonj\",\"Islampur\":\"Islampur\",\"Jamalpur Sadar\":\"Jamalpur Sadar\",\"Madarganj\":\"Madarganj\",\"Melandaha\":\"Melandaha\",\"Sarishabari\":\"Sarishabari\"},\"JSR\":{\"Bagharpara\":\"Bagharpara\",\"Benapole\":\"Benapole\",\"Chaugachha\":\"Chaugachha\",\"Jessore Sadar\":\"Jessore Sadar\",\"Jhikargachha\":\"Jhikargachha\",\"Keshabpur\":\"Keshabpur\",\"Monirampur\":\"Monirampur\",\"Obhoynagar\":\"Obhoynagar\",\"Sarsa\":\"Sarsa\"},\"JLK\":{\"Jhalokathi Sadar\":\"Jhalokathi Sadar\",\"Kathalia\":\"Kathalia\",\"Nalchhiti\":\"Nalchhiti\",\"Rajapur\":\"Rajapur\"},\"JHD\":{\"Harinakundu\":\"Harinakundu\",\"Jhenaidah Sadar\":\"Jhenaidah Sadar\",\"Kaligonj\":\"Kaligonj\",\"Kotchandpur\":\"Kotchandpur\",\"Maheshpur\":\"Maheshpur\",\"Shailakupa\":\"Shailakupa\"},\"JPT\":{\"Akkelpur\":\"Akkelpur\",\"Joypurhat Sadar\":\"Joypurhat Sadar\",\"Kalai\":\"Kalai\",\"Khetlal\":\"Khetlal\",\"Panchbibi\":\"Panchbibi\"},\"KGC\":{\"Dighinala\":\"Dighinala\",\"Guimara\":\"Guimara\",\"Khagrachari Sadar\":\"Khagrachari Sadar\",\"Lakkhichhari\":\"Lakkhichhari\",\"Mahalchhari\":\"Mahalchhari\",\"Maischori\":\"Maischori\",\"Manikchhari\":\"Manikchhari\",\"Matiranga\":\"Matiranga\",\"Mohalchori\":\"Mohalchori\",\"Panchhari\":\"Panchhari\",\"Ramgar\":\"Ramgar\"},\"KHL\":{\"Batiaghata\":\"Batiaghata\",\"Boyra\":\"Boyra\",\"Chandkhali\":\"Chandkhali\",\"Dacope\":\"Dacope\",\"Daulatpur\":\"Daulatpur\",\"Digholia\":\"Digholia\",\"Dumuria\":\"Dumuria\",\"Fultola\":\"Fultola\",\"Khalishpur\":\"Khalishpur\",\"Khulna Sadar\":\"Khulna Sadar\",\"Kopilmuni\":\"Kopilmuni\",\"Koyra\":\"Koyra\",\"Paikgachha Upozila\":\"Paikgachha Upozila\",\"Rupsha\":\"Rupsha\",\"Sonadanga\":\"Sonadanga\",\"Tala Upozilla\":\"Tala Upozilla\",\"Terokhada\":\"Terokhada\"},\"KGN\":{\"Astagram\":\"Astagram\",\"Bajitpur\":\"Bajitpur\",\"Bhairab\":\"Bhairab\",\"Hossainpur\":\"Hossainpur\",\"Itna\":\"Itna\",\"Karimganj\":\"Karimganj\",\"Kishoreganj Sadar\":\"Kishoreganj Sadar\",\"Kuliarchar\":\"Kuliarchar\",\"Mithamoin\":\"Mithamoin\",\"Nikli\":\"Nikli\",\"Pakundia\":\"Pakundia\",\"Tarial\":\"Tarial\"},\"KRG\":{\"Char Rajibpur\":\"Char Rajibpur\",\"Chilmari\":\"Chilmari\",\"Kurigram Sadar\":\"Kurigram Sadar\",\"Nagesshari\":\"Nagesshari\",\"Phulbari\":\"Phulbari\",\"Rajarhat\":\"Rajarhat\",\"Rawmari\":\"Rawmari\",\"Ulipur\":\"Ulipur\"},\"KST\":{\"Daulatpur\":\"Daulatpur\",\"Islamic University\":\"Islamic University\",\"Khoksha\":\"Khoksha\",\"Kumarkhali\":\"Kumarkhali\",\"Kushtia Sadar\":\"Kushtia Sadar\",\"Kushtia-Mirpur\":\"Kushtia-Mirpur\"},\"LKP\":{\"Komalnagar\":\"Komalnagar\",\"Lakshimpur Sadar\":\"Lakshimpur Sadar\",\"Raipur\":\"Raipur\",\"Ramganj\":\"Ramganj\",\"Ramgoti\":\"Ramgoti\"},\"MDR\":{\"Dasar Thana\":\"Dasar Thana\",\"Kalkini Thana\":\"Kalkini Thana\",\"Madaripur Sadar\":\"Madaripur Sadar\",\"Rajoir Thana\":\"Rajoir Thana\",\"Shibchar\":\"Shibchar\"},\"MGR\":{\"Magura Sadar\":\"Magura Sadar\",\"Mohammadpur\":\"Mohammadpur\",\"Shalikha\":\"Shalikha\",\"Sreepur\":\"Sreepur\"},\"MKG\":{\"Daulatpur - Manikganj\":\"Daulatpur - Manikganj\",\"Ghior Thana\":\"Ghior Thana\",\"Harirampur\":\"Harirampur\",\"Manikganj Sadar\":\"Manikganj Sadar\",\"Saturia\":\"Saturia\",\"Shivalaya\":\"Shivalaya\",\"Singair\":\"Singair\"},\"MHR\":{\"Gangni\":\"Gangni\",\"Meherpur Sadar\":\"Meherpur Sadar\",\"Mujibnagar\":\"Mujibnagar\"},\"MVB\":{\"Baralekha\":\"Baralekha\",\"Juri\":\"Juri\",\"Kamalganj\":\"Kamalganj\",\"Kulaura\":\"Kulaura\",\"Moulvibazar Sadar\":\"Moulvibazar Sadar\",\"Rajnagar\":\"Rajnagar\",\"Sreemangal\":\"Sreemangal\"},\"MNS\":{\"Lohajong\":\"Lohajong\",\"Munshiganj Sadar\":\"Munshiganj Sadar\",\"Sirajdikhan\":\"Sirajdikhan\",\"Sreenagar\":\"Sreenagar\",\"Tongibari\":\"Tongibari\"},\"MYM\":{\"Bhaluka\":\"Bhaluka\",\"Dhobaura\":\"Dhobaura\",\"Fulbaria\":\"Fulbaria\",\"Gafargaon\":\"Gafargaon\",\"Gauripur\":\"Gauripur\",\"Haluaghat\":\"Haluaghat\",\"Ishwarganj\":\"Ishwarganj\",\"Muktagachha\":\"Muktagachha\",\"Mymensingh Sadar\":\"Mymensingh Sadar\",\"Nandail\":\"Nandail\",\"Phulpur\":\"Phulpur\",\"Trishal\":\"Trishal\"},\"NGN\":{\"Atrai\":\"Atrai\",\"Bodolgachi\":\"Bodolgachi\",\"Dhamairhat\":\"Dhamairhat\",\"Manda\":\"Manda\",\"Mohadebpur\":\"Mohadebpur\",\"Naogaon Sadar\":\"Naogaon Sadar\",\"Niyamatpur\":\"Niyamatpur\",\"Porsha\":\"Porsha\",\"Potnitola\":\"Potnitola\",\"Raninagaor\":\"Raninagaor\",\"Sapahar\":\"Sapahar\"},\"NRL\":{\"Kalia\":\"Kalia\",\"Narail - Lohagara\":\"Narail - Lohagara\",\"Narail Sadar\":\"Narail Sadar\",\"Terokhada\":\"Terokhada\"},\"NRY\":{\"Araihazar\":\"Araihazar\",\"Baidder Bazar\":\"Baidder Bazar\",\"Bandar\":\"Bandar\",\"Bhulta\\\/Gawsia\":\"Bhulta\\\/Gawsia\",\"Chittagong_Road_Narayangonj\":\"Chittagong Road Narayangonj\",\"Don Chamber\":\"Don Chamber\",\"Fatullah\":\"Fatullah\",\"Gazaria\":\"Gazaria\",\"Jalkuri\":\"Jalkuri\",\"Kachpur\":\"Kachpur\",\"Madanpur\":\"Madanpur\",\"Masdair\":\"Masdair\",\"Narayanganj Sadar\":\"Narayanganj Sadar\",\"Nitaiganj\":\"Nitaiganj\",\"Pagla\":\"Pagla\",\"Ponchoboti\":\"Ponchoboti\",\"Rupganj\":\"Rupganj\",\"Shanarpar\":\"Shanarpar\",\"Shibu Market\":\"Shibu Market\",\"Siddirganj\":\"Siddirganj\",\"Sign Board\":\"Sign Board\",\"Sonargaon\":\"Sonargaon\",\"South Chashara\":\"South Chashara\",\"Zilla Parishod\":\"Zilla Parishod\"},\"NSD\":{\"Belabo\":\"Belabo\",\"Madhabdi\":\"Madhabdi\",\"Monohordi\":\"Monohordi\",\"Narshingdi Sadar\":\"Narshingdi Sadar\",\"Palash\":\"Palash\",\"Raypura\":\"Raypura\",\"Shibpur\":\"Shibpur\"},\"NTR\":{\"Bagatipara\":\"Bagatipara\",\"Baraigram\":\"Baraigram\",\"Gopalpur UPO\":\"Gopalpur UPO\",\"Gurdaspur\":\"Gurdaspur\",\"Naldanga - Natore\":\"Naldanga - Natore\",\"Natore Sadar\":\"Natore Sadar\",\"Singra\":\"Singra\"},\"NKM\":{\"Atpara\":\"Atpara\",\"Barhatta\":\"Barhatta\",\"Kalmakanda\":\"Kalmakanda\",\"Kendua\":\"Kendua\",\"Khaliajuri\":\"Khaliajuri\",\"Madan\":\"Madan\",\"Mohanganj\":\"Mohanganj\",\"Netrokona Sadar\":\"Netrokona Sadar\",\"Purbadhala\":\"Purbadhala\",\"Susang Durgapur\":\"Susang Durgapur\"},\"NLP\":{\"Dimla\":\"Dimla\",\"Domar\":\"Domar\",\"Jaldhaka\":\"Jaldhaka\",\"Kishoriganj\":\"Kishoriganj\",\"Nilphamari Sadar\":\"Nilphamari Sadar\",\"Saidpur\":\"Saidpur\",\"Taraganj\":\"Taraganj\"},\"NKL\":{\"Basurhat\":\"Basurhat\",\"Chatkhil\":\"Chatkhil\",\"Chondrogonj Thana\":\"Chondrogonj Thana\",\"Companigonj\":\"Companigonj\",\"Hatia\":\"Hatia\",\"Maizdee\":\"Maizdee\",\"Noakhali Sadar\":\"Noakhali Sadar\",\"Senbag\":\"Senbag\",\"Sonaimuri\":\"Sonaimuri\",\"Sonapur\":\"Sonapur\",\"Subornochar\":\"Subornochar\"},\"PBN\":{\"Aminpur\":\"Aminpur\",\"Ataikula\":\"Ataikula\",\"Atghoria\":\"Atghoria\",\"Bera\":\"Bera\",\"Bhangura\":\"Bhangura\",\"Chatmohar\":\"Chatmohar\",\"Ishwardi\":\"Ishwardi\",\"Kasinathpur\":\"Kasinathpur\",\"Lalpur\":\"Lalpur\",\"Pabna Sadar\":\"Pabna Sadar\",\"Pabna-Faridpur\":\"Pabna-Faridpur\",\"Sathia\":\"Sathia\",\"Sujanagar\":\"Sujanagar\",\"Tebunia\":\"Tebunia\"},\"PGR\":{\"Atwari\":\"Atwari\",\"Boda\":\"Boda\",\"Debiganj\":\"Debiganj\",\"Panchagarh Sadar\":\"Panchagarh Sadar\",\"Tetulia\":\"Tetulia\"},\"PTL\":{\"Bauphal\":\"Bauphal\",\"Dashmina\":\"Dashmina\",\"Dumkee\":\"Dumkee\",\"Gala chipa\":\"Gala chipa\",\"Kala para\":\"Kala para\",\"Khepupara\":\"Khepupara\",\"Mohipur\":\"Mohipur\",\"Patuakhali Sadar\":\"Patuakhali Sadar\",\"Subidkhali\":\"Subidkhali\"},\"PJP\":{\"Bhandaria\":\"Bhandaria\",\"Kaukhali\":\"Kaukhali\",\"Mathbaria\":\"Mathbaria\",\"Nazirpur\":\"Nazirpur\",\"Pirojpur Sadar\":\"Pirojpur Sadar\",\"Swarupkathi\":\"Swarupkathi\"},\"RJB\":{\"Goalanda\":\"Goalanda\",\"Kalukhali\":\"Kalukhali\",\"Pangsha\":\"Pangsha\",\"Rajbari Sadar\":\"Rajbari Sadar\"},\"RJS\":{\"Bagha\":\"Bagha\",\"Bagmara\":\"Bagmara\",\"Banseshwar\":\"Banseshwar\",\"Charghat\":\"Charghat\",\"Durgapur\":\"Durgapur\",\"Godagari\":\"Godagari\",\"Katakhali\":\"Katakhali\",\"Mohonpur\":\"Mohonpur\",\"Motihar\":\"Motihar\",\"Paba\":\"Paba\",\"Puthia\":\"Puthia\",\"Rajpara\":\"Rajpara\",\"Rajshahi Sadar (Boalia)\":\"Rajshahi Sadar (Boalia)\",\"Shah Mokdum\":\"Shah Mokdum\",\"Sharda\":\"Sharda\",\"Taherpur\":\"Taherpur\",\"Tanor\":\"Tanor\"},\"RGT\":{\"Kaptai\":\"Kaptai\",\"Kawkhali Thana\":\"Kawkhali Thana\",\"Kotwali Thana\":\"Kotwali Thana\",\"Nanichhar\":\"Nanichhar\",\"Rajasthali\":\"Rajasthali\"},\"RGP\":{\"Badarganj\":\"Badarganj\",\"Gangachara\":\"Gangachara\",\"Haragach Thana\":\"Haragach Thana\",\"Kaunia\":\"Kaunia\",\"Mahiganj Thana\":\"Mahiganj Thana\",\"Mithapukur\":\"Mithapukur\",\"Pirgachha\":\"Pirgachha\",\"Pirganj Thana\":\"Pirganj Thana\",\"Porshurampur Thana\":\"Porshurampur Thana\",\"Rangpur Cantonment\":\"Rangpur Cantonment\",\"Rangpur Sadar(Kotowali Thana)\":\"Rangpur Sadar(Kotowali Thana)\",\"Tajhat Thana\":\"Tajhat Thana\"},\"SKR\":{\"Ashashuni Thana\":\"Ashashuni Thana\",\"Debhata Thana\":\"Debhata Thana\",\"Kalaroa\":\"Kalaroa\",\"Kaliganj\":\"Kaliganj\",\"Satkhira Sadar\":\"Satkhira Sadar\",\"Shymnagar\":\"Shymnagar\",\"Tala Thana\":\"Tala Thana\"},\"SHP\":{\"Bhedorganj\":\"Bhedorganj\",\"Damudhya\":\"Damudhya\",\"Gosairhat\":\"Gosairhat\",\"Jajira\":\"Jajira\",\"Naria\":\"Naria\",\"Shariatpur Sadar (Palong)\":\"Shariatpur Sadar (Palong)\"},\"SRP\":{\"Jhinaigati\":\"Jhinaigati\",\"Nakla\":\"Nakla\",\"Nalitabari\":\"Nalitabari\",\"Sherpur Sadar\":\"Sherpur Sadar\",\"Sreebardi\":\"Sreebardi\"},\"SRJ\":{\"Belkuchi\":\"Belkuchi\",\"Kamarkhanda\":\"Kamarkhanda\",\"Kazipur\":\"Kazipur\",\"Rayganj\":\"Rayganj\",\"Salonga\":\"Salonga\",\"Shahjadpur - Shahjadpur\":\"Shahjadpur - Shahjadpur\",\"Sirajganj Sadar\":\"Sirajganj Sadar\",\"Tarash\":\"Tarash\",\"Ullapara\":\"Ullapara\"},\"SNM\":{\"Bishwamvarpur\":\"Bishwamvarpur\",\"Chhatak\":\"Chhatak\",\"Derai\":\"Derai\",\"Dharmapasha\":\"Dharmapasha\",\"Dowarabazar\":\"Dowarabazar\",\"Jagnnathpur\":\"Jagnnathpur\",\"Jamalganj\":\"Jamalganj\",\"Salla\":\"Salla\",\"Shantiganj\":\"Shantiganj\",\"Sunamganj Sadar\":\"Sunamganj Sadar\",\"Tahirpur\":\"Tahirpur\"},\"SYL\":{\"Balaganj\":\"Balaganj\",\"Beanibazar\":\"Beanibazar\",\"Bishwanath\":\"Bishwanath\",\"Companyganj\":\"Companyganj\",\"Dakshin Surma\":\"Dakshin Surma\",\"Fenchuganj\":\"Fenchuganj\",\"Golapganj\":\"Golapganj\",\"Gowainghat\":\"Gowainghat\",\"Jaintapur\":\"Jaintapur\",\"Kanaighat\":\"Kanaighat\",\"Osmani Nagar\":\"Osmani Nagar\",\"Sylhet Sadar\":\"Sylhet Sadar\",\"Zakiganj\":\"Zakiganj\"},\"TGL\":{\"Bashail\":\"Bashail\",\"Bhuapur\":\"Bhuapur\",\"Delduar\":\"Delduar\",\"Dhanbari\":\"Dhanbari\",\"Ghatail\":\"Ghatail\",\"Gopalpur\":\"Gopalpur\",\"Kaliakair\":\"Kaliakair\",\"Kalihati\":\"Kalihati\",\"Madhupur\":\"Madhupur\",\"Mirzapur\":\"Mirzapur\",\"Nagarpur\":\"Nagarpur\",\"Sakhipur\":\"Sakhipur\",\"Tangail Sadar\":\"Tangail Sadar\"},\"TKG\":{\"Baliadangi\":\"Baliadangi\",\"Haripur\":\"Haripur\",\"Pirganj\":\"Pirganj\",\"Ranisankail\":\"Ranisankail\",\"Ruhiya\":\"Ruhiya\",\"Thakurgaon Sadar\":\"Thakurgaon Sadar\"}}",
+            "i18n_select_state_text": "Select an option\u2026",
+            "i18n_no_matches": "No matches found",
+            "i18n_ajax_error": "Loading failed",
+            "i18n_input_too_short_1": "Please enter 1 or more characters",
+            "i18n_input_too_short_n": "Please enter %qty% or more characters",
+            "i18n_input_too_long_1": "Please delete 1 character",
+            "i18n_input_too_long_n": "Please delete %qty% characters",
+            "i18n_selection_too_long_1": "You can only select 1 item",
+            "i18n_selection_too_long_n": "You can only select %qty% items",
+            "i18n_load_more": "Loading more results\u2026",
+            "i18n_searching": "Searching\u2026"
+        };
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="https://dropshop.com.bd/wp-content/plugins/woocommerce/assets/js/frontend/country-select.min.js?ver=8.8.5" id="wc-country-select-js" defer="defer" data-wp-strategy="defer"></script>
+    <link rel="https://api.w.org/" href="https://dropshop.com.bd/wp-json/" />
+    <link rel="alternate" title="JSON" type="application/json" href="https://dropshop.com.bd/wp-json/wp/v2/pages/101856" />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://dropshop.com.bd/xmlrpc.php?rsd" />
+    <meta name="generator" content="WordPress 6.8.1" />
+    <meta name="generator" content="WooCommerce 8.8.5" />
+    <link rel='shortlink' href='https://dropshop.com.bd/' />
+    <link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://dropshop.com.bd/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdropshop.com.bd%2F" />
+    <link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://dropshop.com.bd/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdropshop.com.bd%2F&#038;format=xml" />
+    
+    <!-- Custom JavaScript -->
     <script src="script.js"></script>
-
 </body>
 </html>
