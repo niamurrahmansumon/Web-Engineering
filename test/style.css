@@ -5,131 +5,138 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-body, html {
-  height: 100%;
-}
-
-.container {
-  display: flex;
-  height: 100vh;
-}
-
-.left {
-  flex: 1;
-  background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') center/cover no-repeat;
-  position: relative;
-}
-
-.overlay {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  color: white;
-  max-width: 80%;
-}
-
-.overlay h2 {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
+body {
+  background-color: #fff;
+  color: #333;
 }
 
 .flag {
   width: 16px;
   vertical-align: middle;
-  margin-right: 5px;
 }
 
-.right {
-  flex: 1;
-  padding: 60px;
-  background: #fff;
+.navbar {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.right h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.location {
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-}
-
-.socials img {
-  width: 40px;
-  margin-right: 15px;
-  cursor: pointer;
-}
-
-.divider {
-  margin: 20px 0;
-  font-size: 0.9rem;
-  text-align: center;
-  color: #666;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-input[type="email"],
-input[type="password"],
-.name-fields input {
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.name-fields {
-  display: flex;
-  gap: 10px;
-}
-
-.slider {
-  background-color: #f0f0f0;
-  padding: 10px;
-  text-align: center;
-  color: #999;
-  margin-bottom: 15px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-}
-
-.agreement {
-  font-size: 0.8rem;
-  margin-bottom: 20px;
-}
-
-.agreement a {
-  color: #0073e6;
-  text-decoration: none;
-}
-
-button {
-  background-color: #0366d6;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #000;
   color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 1rem;
 }
 
-button:hover {
-  background-color: #024ea2;
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
-.signin {
-  margin-top: 15px;
+.menu a {
+  margin-right: 20px;
+  color: white;
+  text-decoration: none;
   font-size: 0.9rem;
 }
 
-.signin a {
-  color: #0366d6;
+.right-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.right-menu a {
+  color: white;
   text-decoration: none;
+}
+
+.right-menu button {
+  background-color: #f60;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hero {
+  position: relative;
+  background: url('https://img.freepik.com/free-photo/group-businesspeople-meeting-office_1303-15866.jpg') center/cover no-repeat;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 60px;
+  color: white;
+}
+
+.overlay {
+  max-width: 600px;
+}
+
+.learn {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 25px 0 0 25px;
+  border: none;
+}
+
+.search-bar button {
+  padding: 12px 15px;
+  background: white;
+  border: none;
+  cursor: pointer;
+}
+
+.search-btn {
+  background-color: #f60;
+  color: white;
+  border-radius: 0 25px 25px 0;
+  margin-left: -5px;
+}
+
+.tags {
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+
+.tags button {
+  margin-left: 8px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #444;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}
+
+.features {
+  background-color: #3a1d0f;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  width: 220px;
+  margin: 10px;
+}
+
+.feature h3 {
+  margin-bottom: 10px;
 }

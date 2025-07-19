@@ -3,48 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Alibaba Supplier Sign Up</title>
+  <title>Alibaba B2B Clone</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="left">
-      <div class="overlay">
-        <h2>"In just 1 year, LTA International generated 14 new customers with new sales growth totaling $1.5 million."</h2>
-        <p><img src="https://flagcdn.com/us.svg" alt="US" class="flag" /> Andrea Vitiello<br>LTA Internacional, Fundador</p>
+  <header class="navbar">
+    <div class="logo">Alibaba.com</div>
+    <nav class="menu">
+      <a href="#">All categories</a>
+      <a href="#">Featured selections</a>
+      <a href="#">Order protections</a>
+    </nav>
+    <div class="right-menu">
+      <span>Deliver to: <img src="https://flagcdn.com/bd.svg" class="flag"> BD</span>
+      <span>🌐 English-BDT</span>
+      <a href="#">Sign in</a>
+      <button>Create account</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="overlay">
+      <p class="learn">▶ Learn about Alibaba.com</p>
+      <h1>The leading B2B ecommerce platform for global trade</h1>
+      <div class="search-bar">
+        <input type="text" placeholder="women's clothing" />
+        <button><img src="https://img.icons8.com/ios-filled/20/camera.png"/> </button>
+        <button class="search-btn">Search</button>
+      </div>
+      <div class="tags">
+        <span>Frequently searched:</span>
+        <button>iphones 15 pro max</button>
+        <button>sex toy box</button>
+        <button>pakistani dress</button>
       </div>
     </div>
+  </section>
 
-    <div class="right">
-      <h2>Sign up as a supplier</h2>
-      <p class="location">Company location: <img src="https://flagcdn.com/bd.svg" class="flag" alt="BD"> Bangladesh</p>
-      
-      <div class="socials">
-        <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google" />
-        <img src="https://img.icons8.com/color/48/facebook-new.png" alt="Facebook" />
-        <img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn" />
-      </div>
-
-      <div class="divider">Or</div>
-
-      <form>
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
-        <div class="name-fields">
-          <input type="text" placeholder="First name" required />
-          <input type="text" placeholder="Last name" required />
-        </div>
-        <div class="slider">
-          <span>➡ Please slide to verify</span>
-        </div>
-        <label class="agreement">
-          <input type="checkbox" required />
-          I agree to the <a href="#">Free Membership Agreement</a>, <a href="#">Terms of Use</a>, and <a href="#">Privacy Policy</a>.
-        </label>
-        <button type="submit">Create account</button>
-        <p class="signin">Already have an account? <a href="#">Sign in</a></p>
-      </form>
+  <section class="features">
+    <div class="feature">
+      <h3>Millions of business offerings</h3>
+      <p>Explore products and suppliers for your business from millions of offerings worldwide.</p>
     </div>
-  </div>
+    <div class="feature">
+      <h3>Assured quality and transactions</h3>
+      <p>Ensure production quality from verified suppliers, with your orders protected from payment to delivery.</p>
+    </div>
+    <div class="feature">
+      <h3>One-stop trading solution</h3>
+      <p>Order seamlessly from product/supplier search to order management, payment, and fulfillment.</p>
+    </div>
+    <div class="feature">
+      <h3>Tailored trading experience</h3>
+      <p>Get curated benefits, such as exclusive discounts, enhanced protection, and extra support.</p>
+    </div>
+  </section>
 </body>
 </html>
