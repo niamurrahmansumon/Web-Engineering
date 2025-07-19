@@ -218,7 +218,7 @@
         <!-- ✅ Password Field + Dynamic Hints -->
         <input type="password" placeholder="Password" required id="password"/>
         <div class="password-hints">
-          <p id="rule-length" class="invalid">❌ Contains 6 to 20 characters</p>
+          <p id="rule-length" class="invalid">❌ Contains 8 to 20 characters</p>
           <p id="rule-validchars" class="invalid">❌ Contains only letters, numbers or symbols</p>
           <p id="rule-combo" class="invalid">❌ Contains at least two of: letters, numbers, or symbols</p>
         </div>
@@ -256,11 +256,11 @@
 
     // Rule 1: Length 8-20
     if (pwd.length >= 8 && pwd.length <= 20) {
-      ruleLength.textContent = "✅ Contains 6 to 20 characters";
+      ruleLength.textContent = "✅ Contains 8 to 20 characters";
       ruleLength.classList.remove("invalid");
       ruleLength.classList.add("valid");
     } else {
-      ruleLength.textContent = "❌ Contains 6 to 20 characters";
+      ruleLength.textContent = "❌ Contains 8 to 20 characters";
       ruleLength.classList.remove("valid");
       ruleLength.classList.add("invalid");
     }
@@ -344,7 +344,7 @@
       messages.push('Please enter a valid email address.');
     }
     if (
-      password.value.length < 6 || password.value.length > 20 ||
+      password.value.length < 8 || password.value.length > 20 ||
       !/[A-Za-z0-9!@#$%^&*]/.test(password.value)
     ) {
       valid = false;
