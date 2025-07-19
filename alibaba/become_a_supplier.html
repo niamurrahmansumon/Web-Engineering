@@ -254,8 +254,8 @@
   passwordField.addEventListener("input", () => {
     const pwd = passwordField.value;
 
-    // Rule 1: Length 6-20
-    if (pwd.length >= 6 && pwd.length <= 20) {
+    // Rule 1: Length 8-20
+    if (pwd.length >= 8 && pwd.length <= 20) {
       ruleLength.textContent = "✅ Contains 6 to 20 characters";
       ruleLength.classList.remove("invalid");
       ruleLength.classList.add("valid");
