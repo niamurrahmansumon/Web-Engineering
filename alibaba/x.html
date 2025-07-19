@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alibaba Supplier Sign Up</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .left {
+      flex: 1;
+      background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') center/cover no-repeat;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      color: white;
+      max-width: 80%;
+    }
+
+    .overlay h2 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .flag {
+      width: 16px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+    .right {
+      flex: 1;
+      padding: 60px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .right h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .location {
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .socials img {
+      width: 40px;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+
+    .divider {
+      margin: 20px 0;
+      font-size: 0.9rem;
+      text-align: center;
+      color: #666;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    .name-fields input {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .password-hints {
+      font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 15px;
+    }
+
+    .password-hints p {
+      margin: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .name-fields {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    /* SLIDE VERIFY */
+    .slider-container {
+      background: #eee;
+      border-radius: 4px;
+      height: 40px;
+      position: relative;
+      user-select: none;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    .slider-text {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 40px;
+      color: #999;
+    }
+    .slider-button {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      background: #ccc;
+      text-align: center;
+      line-height: 40px;
+      cursor: grab;
+    }
+    .slider-success {
+      background: #4CAF50 !important;
+      color: white;
+    }
+
+    .agreement {
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+    }
+
+    .agreement a {
+      color: #0073e6;
+      text-decoration: none;
+    }
+
+    button {
+      background-color: #0366d6;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+
+    button:hover:enabled {
+      background-color: #024ea2;
+    }
+
+    .signin {
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+
+    .signin a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <div class="overlay">
+        <h2>"In just 1 year, LTA International generated 14 new customers with new sales growth totaling $1.5 million."</h2>
+        <p><img src="https://flagcdn.com/us.svg" alt="US" class="flag" /> Andrea Vitiello<br>LTA Internacional, Fundador</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <h2>Sign up as a supplier</h2>
+      <p class="location">Company location: <img src="https://flagcdn.com/bd.svg" class="flag" alt="BD"> Bangladesh</p>
+      
+      <div class="socials">
+        <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google" />
+        <img src="https://img.icons8.com/color/48/facebook-new.png" alt="Facebook" />
+        <img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn" />
+      </div>
+
+      <div class="divider">Or</div>
+
+      <form>
+        <input type="email" placeholder="Email" required />
+        
+        <!-- Password Field + Hints -->
+        <input type="password" placeholder="Password" required />
+        <div class="password-hints">
+          <p>✅ Contains 6 to 20 characters</p>
+          <p>✅ Contains letters, numbers or symbols only</p>
+          <p>✅ Contains at least two of: letters, numbers or symbols</p>
+        </div>
+
+        <div class="name-fields">
+          <input type="text" placeholder="First name" required />
+          <input type="text" placeholder="Last name" required />
+        </div>
+
+        <!-- Slide to verify -->
+        <div class="slider-container" id="slider">
+          <div class="slider-text">➡ Please slide to verify</div>
+          <div class="slider-button">➡</div>
+        </div>
+
+        <label class="agreement">
+          <input type="checkbox" required />
+          I agree to the <a href="#">Free Membership Agreement</a>, <a href="#">Terms of Use</a>, and <a href="#">Privacy Policy</a>.
+        </label>
+        <button type="submit" disabled id="submitBtn">Create account</button>
+        <p class="signin">Already have an account? <a href="#">Sign in</a></p>
+      </form>
+    </div>
+  </div>
+
+<script>
+  // ✅ Slide to Verify Logic
+  const slider = document.getElementById('slider');
+  const sliderBtn = slider.querySelector('.slider-button');
+  const sliderText = slider.querySelector('.slider-text');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  let isDown = false;
+  let startX = 0;
+
+  sliderBtn.addEventListener('mousedown', e => {
+    isDown = true;
+    startX = e.clientX - sliderBtn.offsetLeft;
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    let newX = e.clientX - startX;
+    const maxWidth = slider.offsetWidth - sliderBtn.offsetWidth;
+    if (newX < 0) newX = 0;
+    if (newX > maxWidth) newX = maxWidth;
+    sliderBtn.style.left = newX + 'px';
+
+    // If fully slid
+    if (newX >= maxWidth) {
+      sliderBtn.classList.add('slider-success');
+      sliderBtn.textContent = '✔';
+      sliderText.textContent = 'Verified!';
+      sliderText.style.color = 'white';
+      slider.style.background = '#4CAF50';
+      isDown = false;
+      submitBtn.disabled = false;
+    }
+  });
+
+  document.addEventListener('mouseup', () => isDown = false);
+
+  // ✅ Existing Form Validation
+  document.querySelector('form').addEventListener('submit', function (e) {
+    const email = this.querySelector('input[type="email"]');
+    const password = this.querySelector('input[type="password"]');
+    const firstName = this.querySelector('.name-fields input[placeholder="First name"]');
+    const lastName = this.querySelector('.name-fields input[placeholder="Last name"]');
+    const agreement = this.querySelector('.agreement input[type="checkbox"]');
+    let valid = true;
+    let messages = [];
+
+    if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      valid = false;
+      messages.push('Please enter a valid email address.');
+    }
+    if (
+      password.value.length < 6 || password.value.length > 20 ||
+      !password.value.match(/[A-Za-z0-9!@#$%^&*]/)
+    ) {
+      valid = false;
+      messages.push('Password must be 6-20 characters with letters, numbers or symbols.');
+    }
+    if (!firstName.value.trim().match(/^[A-Za-z]+$/)) {
+      valid = false;
+      messages.push('First name must contain only letters.');
+    }
+    if (!lastName.value.trim().match(/^[A-Za-z]+$/)) {
+      valid = false;
+      messages.push('Last name must contain only letters.');
+    }
+    if (!agreement.checked) {
+      valid = false;
+      messages.push('You must agree to the terms.');
+    }
+
+    if (!valid) {
+      e.preventDefault();
+      alert(messages.join('\n'));
+    }
+  });
+</script>
+</body>
+</html>
