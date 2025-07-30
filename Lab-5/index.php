@@ -1,5 +1,19 @@
 <?php
+session_start();
 require_once 'db_config.php';
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Handle logout
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
 
 // Handle form submission (Create/Update)
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
@@ -218,7 +232,7 @@ if (isset($_GET['edit'])) {
       background: #f44336;
       color: #fff;
     }
-    .new-record-btn {
+    .new-record-btn, .logout-btn {
       background: #1976d2;
       color: #fff;
       padding: 10px;
@@ -226,12 +240,17 @@ if (isset($_GET['edit'])) {
       border-radius: 4px;
       display: inline-block;
       margin-bottom: 20px;
+      margin-right: 10px;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h2>Bio Data Management</h2>
+    <div style="text-align: right;">
+      <span>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
+      <a href="index.php?logout=true" class="logout-btn">Logout</a>
+    </div>
 
     <!-- Form for Create/Update -->
     <form id="bioForm" enctype="multipart/form-data">
