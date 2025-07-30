@@ -1,3 +1,105 @@
+<?php
+require_once 'db_config.php';
+
+// Handle form submission (Create/Update)
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
+    try {
+        if ($_POST['action'] === 'create' || $_POST['action'] === 'update') {
+            $stmt = $conn->prepare("
+                " . ($_POST['action'] === 'update' ? "UPDATE" : "INSERT INTO") . " bio_data 
+                SET 
+                    name = :name, 
+                    dob_day = :dob_day, 
+                    dob_month = :dob_month, 
+                    dob_year = :dob_year, 
+                    birth_hour = :birth_hour, 
+                    birth_minute = :birth_minute, 
+                    birth_ampm = :birth_ampm, 
+                    gender = :gender, 
+                    birth_place = :birth_place, 
+                    height = :height, 
+                    complexion = :complexion, 
+                    education = :education, 
+                    occupation = :occupation, 
+                    hobbies = :hobbies, 
+                    father_name = :father_name, 
+                    mother_name = :mother_name, 
+                    father_occupation = :father_occupation, 
+                    mother_occupation = :mother_occupation, 
+                    brothers = :brothers, 
+                    sisters = :sisters, 
+                    phone = :phone, 
+                    email = :email, 
+                    address = :address, 
+                    about_me = :about_me,
+                    photo = :photo
+                " . ($_POST['action'] === 'update' ? "WHERE id = :id" : "") . "
+            ");
+
+            // Bind parameters
+            $stmt->bindParam(':name', $_POST['name']);
+            $stmt->bindParam(':dob_day', $_POST['dob_day']);
+            $stmt->bindParam(':dob_month', $_POST['dob_month']);
+            $stmt->bindParam(':dob_year', $_POST['dob_year']);
+            $stmt->bindParam(':birth_hour', $_POST['birth_hour']);
+            $stmt->bindParam(':birth_minute', $_POST['birth_minute']);
+            $stmt->bindParam(':birth_ampm', $_POST['birth_ampm']);
+            $stmt->bindParam(':gender', $_POST['gender']);
+            $stmt->bindParam(':birth_place', $_POST['birth_place']);
+            $stmt->bindParam(':height', $_POST['height']);
+            $stmt->bindParam(':complexion', $_POST['complexion']);
+            $stmt->bindParam(':education', $_POST['education']);
+            $stmt->bindParam(':occupation', $_POST['occupation']);
+            $stmt->bindParam(':hobbies', $_POST['hobbies']);
+            $stmt->bindParam(':father_name', $_POST['father_name']);
+            $stmt->bindParam(':mother_name', $_POST['mother_name']);
+            $stmt->bindParam(':father_occupation', $_POST['father_occupation']);
+            $stmt->bindParam(':mother_occupation', $_POST['mother_occupation']);
+            $stmt->bindParam(':brothers', $_POST['brothers']);
+            $stmt->bindParam(':sisters', $_POST['sisters']);
+            $stmt->bindParam(':phone', $_POST['phone']);
+            $stmt->bindParam(':email', $_POST['email']);
+            $stmt->bindParam(':address', $_POST['address']);
+            $stmt->bindParam(':about_me', $_POST['about_me']);
+
+            // Handle photo upload
+            $photo = null;
+            if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
+                $photo = file_get_contents($_FILES['photo']['tmp_name']);
+            }
+            $stmt->bindParam(':photo', $photo, PDO::PARAM_LOB);
+
+            if ($_POST['action'] === 'update') {
+                $stmt->bindParam(':id', $_POST['id']);
+            }
+
+            $stmt->execute();
+            echo json_encode(['status' => 'success', 'message' => 'Data ' . ($_POST['action'] === 'update' ? 'updated' : 'saved') . ' successfully']);
+        } elseif ($_POST['action'] === 'delete') {
+            $stmt = $conn->prepare("DELETE FROM bio_data WHERE id = :id");
+            $stmt->bindParam(':id', $_POST['id']);
+            $stmt->execute();
+            echo json_encode(['status' => 'success', 'message' => 'Data deleted successfully']);
+        }
+    } catch (PDOException $e) {
+        echo json_encode(['status' => 'error', 'message' => 'Error: ' . $e->getMessage()]);
+    }
+    exit;
+}
+
+// Fetch all records for display (Read)
+$records = $conn->query("SELECT id, name, dob_day, dob_month, dob_year, birth_place, height, complexion, education, photo FROM bio_data")->fetchAll(PDO::FETCH_ASSOC);
+
+// Fetch single record for editing
+$editRecord = null;
+if (isset($_GET['edit'])) {
+    $stmt = $conn->prepare("SELECT * FROM bio_data WHERE id = :id");
+    $stmt->bindParam(':id', $_GET['edit']);
+    $stmt->execute();
+    $editRecord = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,139 +189,225 @@
       margin: auto auto 10px;
       background: #eee;
     }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background: #1976d2;
+      color: #fff;
+    }
+    .action-btn {
+      padding: 5px 10px;
+      margin: 0 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .edit-btn {
+      background: #4caf50;
+      color: #fff;
+    }
+    .delete-btn {
+      background: #f44336;
+      color: #fff;
+    }
+    .new-record-btn {
+      background: #1976d2;
+      color: #fff;
+      padding: 10px;
+      text-decoration: none;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Bio Data Form</h2>
+    <h2>Bio Data Management</h2>
 
-    <div class="photo-upload">
-      <img id="photoPreview" class="photo-preview" src="https://via.placeholder.com/100x100?text=Photo" alt="Photo Preview">
-      <input type="file" id="photoInput" accept="image/*">
-      <div class="error" id="photoError"></div>
-    </div>
+    <!-- Form for Create/Update -->
+    <form id="bioForm" enctype="multipart/form-data">
+      <input type="hidden" id="action" name="action" value="<?php echo $editRecord ? 'update' : 'create'; ?>">
+      <?php if ($editRecord): ?>
+        <input type="hidden" id="id" name="id" value="<?php echo htmlspecialchars($editRecord['id']); ?>">
+      <?php endif; ?>
 
-    <form id="bioForm" novalidate enctype="multipart/form-data">
+      <div class="photo-upload">
+        <img id="photoPreview" class="photo-preview" src="<?php echo $editRecord && $editRecord['photo'] ? 'data:image/jpeg;base64,' . base64_encode($editRecord['photo']) : 'https://via.placeholder.com/100x100?text=Photo'; ?>" alt="Photo Preview">
+        <input type="file" id="photoInput" accept="image/*" name="photo">
+        <div class="error" id="photoError"></div>
+      </div>
+
       <label>Name *</label>
-      <input type="text" id="name" required>
+      <input type="text" id="name" name="name" value="<?php echo $editRecord ? htmlspecialchars($editRecord['name']) : ''; ?>" required>
       <div class="error" id="nameError"></div>
 
       <label>Date of Birth *</label>
       <div class="row">
-        <select id="dob_day" required>
+        <select id="dob_day" name="dob_day" required>
           <option value="">Day</option>
-          <script>
-            for(let i=1;i<=31;i++) document.write(`<option>${i}</option>`);
-          </script>
+          <?php for ($i = 1; $i <= 31; $i++): ?>
+            <option <?php echo $editRecord && $editRecord['dob_day'] == $i ? 'selected' : ''; ?>><?php echo $i; ?></option>
+          <?php endfor; ?>
         </select>
-        <select id="dob_month" required>
+        <select id="dob_month" name="dob_month" required>
           <option value="">Month</option>
-          <option value="1">January</option><option value="2">February</option><option value="3">March</option>
-          <option value="4">April</option><option value="5">May</option><option value="6">June</option>
-          <option value="7">July</option><option value="8">August</option><option value="9">September</option>
-          <option value="10">October</option><option value="11">November</option><option value="12">December</option>
+          <option value="1" <?php echo $editRecord && $editRecord['dob_month'] == 1 ? 'selected' : ''; ?>>January</option>
+          <option value="2" <?php echo $editRecord && $editRecord['dob_month'] == 2 ? 'selected' : ''; ?>>February</option>
+          <option value="3" <?php echo $editRecord && $editRecord['dob_month'] == 3 ? 'selected' : ''; ?>>March</option>
+          <option value="4" <?php echo $editRecord && $editRecord['dob_month'] == 4 ? 'selected' : ''; ?>>April</option>
+          <option value="5" <?php echo $editRecord && $editRecord['dob_month'] == 5 ? 'selected' : ''; ?>>May</option>
+          <option value="6" <?php echo $editRecord && $editRecord['dob_month'] == 6 ? 'selected' : ''; ?>>June</option>
+          <option value="7" <?php echo $editRecord && $editRecord['dob_month'] == 7 ? 'selected' : ''; ?>>July</option>
+          <option value="8" <?php echo $editRecord && $editRecord['dob_month'] == 8 ? 'selected' : ''; ?>>August</option>
+          <option value="9" <?php echo $editRecord && $editRecord['dob_month'] == 9 ? 'selected' : ''; ?>>September</option>
+          <option value="10" <?php echo $editRecord && $editRecord['dob_month'] == 10 ? 'selected' : ''; ?>>October</option>
+          <option value="11" <?php echo $editRecord && $editRecord['dob_month'] == 11 ? 'selected' : ''; ?>>November</option>
+          <option value="12" <?php echo $editRecord && $editRecord['dob_month'] == 12 ? 'selected' : ''; ?>>December</option>
         </select>
-        <input type="number" id="dob_year" placeholder="Year" required>
+        <input type="number" id="dob_year" name="dob_year" placeholder="Year" value="<?php echo $editRecord ? htmlspecialchars($editRecord['dob_year']) : ''; ?>" required>
       </div>
       <div class="error" id="dobError"></div>
 
       <label>Time of Birth</label>
       <div class="row">
-        <select id="birth_hour">
+        <select id="birth_hour" name="birth_hour">
           <option value="">Hour</option>
-          <script>
-            for(let i=1;i<=12;i++) document.write(`<option>${i}</option>`);
-          </script>
+          <?php for ($i = 1; $i <= 12; $i++): ?>
+            <option <?php echo $editRecord && $editRecord['birth_hour'] == $i ? 'selected' : ''; ?>><?php echo $i; ?></option>
+          <?php endfor; ?>
         </select>
-        <select id="birth_minute">
+        <select id="birth_minute" name="birth_minute">
           <option value="">Minute</option>
-          <script>
-            for(let i=0;i<60;i++) document.write(`<option>${String(i).padStart(2,'0')}</option>`);
-          </script>
+          <?php for ($i = 0; $i < 60; $i++): ?>
+            <option <?php echo $editRecord && $editRecord['birth_minute'] == sprintf("%02d", $i) ? 'selected' : ''; ?>><?php echo sprintf("%02d", $i); ?></option>
+          <?php endfor; ?>
         </select>
-        <select id="birth_ampm">
+        <select id="birth_ampm" name="birth_ampm">
           <option value="">AM/PM</option>
-          <option>AM</option>
-          <option>PM</option>
+          <option <?php echo $editRecord && $editRecord['birth_ampm'] == 'AM' ? 'selected' : ''; ?>>AM</option>
+          <option <?php echo $editRecord && $editRecord['birth_ampm'] == 'PM' ? 'selected' : ''; ?>>PM</option>
         </select>
       </div>
       <div class="error" id="birthTimeError"></div>
 
       <label>Gender</label>
-      <select id="gender">
+      <select id="gender" name="gender">
         <option value="">Select</option>
-        <option>Male</option>
-        <option>Female</option>
-        <option>Other</option>
+        <option <?php echo $editRecord && $editRecord['gender'] == 'Male' ? 'selected' : ''; ?>>Male</option>
+        <option <?php echo $editRecord && $editRecord['gender'] == 'Female' ? 'selected' : ''; ?>>Female</option>
+        <option <?php echo $editRecord && $editRecord['gender'] == 'Other' ? 'selected' : ''; ?>>Other</option>
       </select>
       <div class="error" id="genderError"></div>
 
       <label>Birth Place *</label>
-      <input type="text" id="birth_place" required>
+      <input type="text" id="birth_place" name="birth_place" value="<?php echo $editRecord ? htmlspecialchars($editRecord['birth_place']) : ''; ?>" required>
       <div class="error" id="birthPlaceError"></div>
 
       <label>Height *</label>
-      <input type="text" id="height" placeholder="e.g. 170 cm" required>
+      <input type="text" id="height" name="height" placeholder="e.g. 170 cm" value="<?php echo $editRecord ? htmlspecialchars($editRecord['height']) : ''; ?>" required>
       <div class="error" id="heightError"></div>
 
       <label>Complexion *</label>
-      <input type="text" id="complexion" required>
+      <input type="text" id="complexion" name="complexion" value="<?php echo $editRecord ? htmlspecialchars($editRecord['complexion']) : ''; ?>" required>
       <div class="error" id="complexionError"></div>
 
       <label>Education *</label>
-      <input type="text" id="education" required>
+      <input type="text" id="education" name="education" value="<?php echo $editRecord ? htmlspecialchars($editRecord['education']) : ''; ?>" required>
       <div class="error" id="educationError"></div>
 
       <label>Occupation</label>
-      <input type="text" id="occupation">
+      <input type="text" id="occupation" name="occupation" value="<?php echo $editRecord ? htmlspecialchars($editRecord['occupation']) : ''; ?>">
       <div class="error" id="occupationError"></div>
 
       <label>Hobbies</label>
-      <input type="text" id="hobbies">
+      <input type="text" id="hobbies" name="hobbies" value="<?php echo $editRecord ? htmlspecialchars($editRecord['hobbies']) : ''; ?>">
       <div class="error" id="hobbiesError"></div>
 
       <label>Father Name</label>
-      <input type="text" id="father_name">
+      <input type="text" id="father_name" name="father_name" value="<?php echo $editRecord ? htmlspecialchars($editRecord['father_name']) : ''; ?>">
       <div class="error" id="fatherError"></div>
 
       <label>Mother Name</label>
-      <input type="text" id="mother_name">
+      <input type="text" id="mother_name" name="mother_name" value="<?php echo $editRecord ? htmlspecialchars($editRecord['mother_name']) : ''; ?>">
       <div class="error" id="motherError"></div>
 
       <label>Father Occupation</label>
-      <input type="text" id="father_occupation">
+      <input type="text" id="father_occupation" name="father_occupation" value="<?php echo $editRecord ? htmlspecialchars($editRecord['father_occupation']) : ''; ?>">
       <div class="error" id="fatherOccupationError"></div>
 
       <label>Mother Occupation</label>
-      <input type="text" id="mother_occupation">
+      <input type="text" id="mother_occupation" name="mother_occupation" value="<?php echo $editRecord ? htmlspecialchars($editRecord['mother_occupation']) : ''; ?>">
       <div class="error" id="motherOccupationError"></div>
 
       <label>Brother(s)</label>
-      <input type="text" id="brothers">
+      <input type="text" id="brothers" name="brothers" value="<?php echo $editRecord ? htmlspecialchars($editRecord['brothers']) : ''; ?>">
       <div class="error" id="brothersError"></div>
 
       <label>Sister(s)</label>
-      <input type="text" id="sisters">
+      <input type="text" id="sisters" name="sisters" value="<?php echo $editRecord ? htmlspecialchars($editRecord['sisters']) : ''; ?>">
       <div class="error" id="sistersError"></div>
 
       <label>Phone</label>
-      <input type="text" id="phone">
+      <input type="text" id="phone" name="phone" value="<?php echo $editRecord ? htmlspecialchars($editRecord['phone']) : ''; ?>">
       <div class="error" id="phoneError"></div>
 
       <label>Email</label>
-      <input type="email" id="email">
+      <input type="email" id="email" name="email" value="<?php echo $editRecord ? htmlspecialchars($editRecord['email']) : ''; ?>">
       <div class="error" id="emailError"></div>
 
       <label>Address</label>
-      <input type="text" id="address">
+      <input type="text" id="address" name="address" value="<?php echo $editRecord ? htmlspecialchars($editRecord['address']) : ''; ?>">
       <div class="error" id="addressError"></div>
 
       <label>About Me</label>
-      <textarea id="about_me"></textarea>
+      <textarea id="about_me" name="about_me"><?php echo $editRecord ? htmlspecialchars($editRecord['about_me']) : ''; ?></textarea>
       <div class="error" id="aboutMeError"></div>
 
-      <button type="submit">Submit</button>
+      <button type="submit"><?php echo $editRecord ? 'Update' : 'Submit'; ?></button>
     </form>
+
+    <!-- Records Table -->
+    <a href="index.php" class="new-record-btn">Add New Record</a>
+    <table>
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Date of Birth</th>
+          <th>Birth Place</th>
+          <th>Height</th>
+          <th>Complexion</th>
+          <th>Education</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($records as $record): ?>
+          <tr>
+            <td><img src="<?php echo $record['photo'] ? 'data:image/jpeg;base64,' . base64_encode($record['photo']) : 'https://via.placeholder.com/50x50?text=No+Photo'; ?>" width="50" height="50" style="border-radius: 50%;"></td>
+            <td><?php echo htmlspecialchars($record['name']); ?></td>
+            <td><?php echo htmlspecialchars($record['dob_day'] . '/' . $record['dob_month'] . '/' . $record['dob_year']); ?></td>
+            <td><?php echo htmlspecialchars($record['birth_place']); ?></td>
+            <td><?php echo htmlspecialchars($record['height']); ?></td>
+            <td><?php echo htmlspecialchars($record['complexion']); ?></td>
+            <td><?php echo htmlspecialchars($record['education']); ?></td>
+            <td>
+              <button class="action-btn edit-btn" onclick="window.location.href='index.php?edit=<?php echo $record['id']; ?>'">Edit</button>
+              <button class="action-btn delete-btn" onclick="deleteRecord(<?php echo $record['id']; ?>)">Delete</button>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
   </div>
 
 <script>
@@ -269,7 +457,7 @@ photoInput.addEventListener("change", function() {
     this.value = "";
     return;
   }
-  if (file.size > 2 * 1024 * 1024) { // 2MB limit
+  if (file.size > 2 * 1024 * 1024) {
     photoError.textContent = "Image must be less than 2MB.";
     this.value = "";
     return;
@@ -320,7 +508,7 @@ form.addEventListener("submit", function(e) {
   e.preventDefault();
   let valid = true;
 
-  if (!photoInput.files[0]) {
+  if (!photoInput.files[0] && document.getElementById("action").value === "create") {
     valid = false;
     photoError.textContent = "Please upload a photo.";
   } else {
@@ -388,15 +576,52 @@ form.addEventListener("submit", function(e) {
   if (valid) {
     const formData = new FormData(form);
     formData.append("photo", photoInput.files[0]);
-    alert("Form submitted successfully! Data: " + JSON.stringify(Object.fromEntries(formData)));
-    form.reset();
-    photoPreview.src = "https://via.placeholder.com/100x100?text=Photo";
-    fields.forEach(field => document.getElementById(field.errorId).textContent = "");
-    photoError.textContent = "";
+
+    fetch('', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        alert(data.message);
+        window.location.href = 'index.php'; // Refresh to show updated table
+      } else {
+        alert(data.message);
+      }
+    })
+    .catch(error => {
+      alert("An error occurred: " + error.message);
+    });
   } else {
     alert("Please fix the highlighted errors before submitting.");
   }
 });
+
+function deleteRecord(id) {
+  if (confirm("Are you sure you want to delete this record?")) {
+    const formData = new FormData();
+    formData.append('action', 'delete');
+    formData.append('id', id);
+
+    fetch('', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        alert(data.message);
+        window.location.href = 'index.php'; // Refresh to update table
+      } else {
+        alert(data.message);
+      }
+    })
+    .catch(error => {
+      alert("An error occurred: " + error.message);
+    });
+  }
+}
 </script>
 </body>
 </html>
