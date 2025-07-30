@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bio Data Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f8f8; }
+    section {
+      background: #fff;
+      padding: 2rem;
+      padding-top: 7.5rem;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: 2rem auto;
+      box-shadow: 0 2px 8px #0001;
+      position: relative;
+    }
+    .photo-upload {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      text-align: center;
+      z-index: 2;
+    }
+    .photo-preview {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #1976d2;
+      background: #eee;
+      display: block;
+      margin-bottom: 0.5em;
+    }
+    .photo-upload label {
+      display: block;
+      font-size: 0.9em;
+      margin-bottom: 0.3em;
+      color: #1976d2;
+      cursor: pointer;
+    }
+    .photo-upload input[type="file"] { display: none; }
+    label { display: block; margin-bottom: 1rem; }
+    input, select { width: 100%; padding: 0.5em 2em 0.5em 0.5em; font-size: 1em; border: 2px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    input:focus, select:focus { outline: none; border-color: #888; }
+    .input-wrap { position: relative; }
+    .icon { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font-size: 1.2em; pointer-events: none; }
+    .valid { border-color: green !important; }
+    .invalid { border-color: red !important; }
+    .icon.valid { color: green; }
+    .icon.invalid { color: red; }
+    small { color: #555; }
+    button {
+      padding: 0.5em 1.5em;
+      font-size: 1em;
+      border: none;
+      border-radius: 4px;
+      background: #1976d2;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background: #115293; }
+    .gender-group { display: flex; align-items: center; gap: 1em; margin-top: 0.5em; }
+    .gender-label { margin-bottom: 0.3em; }
+    .gender-icon { margin-left: 0.5em; font-size: 1.2em; vertical-align: middle; }
+    @media (max-width: 500px) {
+      .photo-upload { position: static; margin-bottom: 1em; }
+      section { padding-top: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div class="photo-upload">
+      <img id="photoPreview" class="photo-preview" src="https://via.placeholder.com/80x80?text=Photo" alt="Photo Preview">
+      <label for="photoInput">Upload Photo</label>
+      <input type="file" id="photoInput" name="photoInput" accept="image/*">
+    </div>
+
+    <!-- ✅ Added action, method, enctype -->
+    <form id="bioForm" method="POST" action="save_bio.php" enctype="multipart/form-data" autocomplete="off" novalidate>
+
+      <label>
+        My Name:
+        <div class="input-wrap">
+          <input type="text" id="name" name="name" required>
+          <span id="nameIcon" class="icon"></span>
+        </div>
+        <small id="nameError"></small>
+      </label>
+
+      <label>
+        Father Name:
+        <div class="input-wrap">
+          <input type="text" id="fatherName" name="fatherName" required>
+          <span id="fatherNameIcon" class="icon"></span>
+        </div>
+        <small id="fatherNameError"></small>
+      </label>
+
+      <label>
+        Mother Name:
+        <div class="input-wrap">
+          <input type="text" id="motherName" name="motherName" required>
+          <span id="motherNameIcon" class="icon"></span>
+        </div>
+        <small id="motherNameError"></small>
+      </label>
+
+      <label>
+        Qualification Details:
+        <div class="input-wrap">
+          <input type="text" id="qualification" name="qualification" required>
+          <span id="qualificationIcon" class="icon"></span>
+        </div>
+      </label>
+
+      <label>
+        Weight (kg):
+        <div class="input-wrap">
+          <input type="number" id="weight" name="weight" min="0" step="0.1" required>
+          <span id="weightIcon" class="icon"></span>
+        </div>
+      </label>
+
+      <label>
+        Date of Birth:
+        <div class="input-wrap">
+          <input type="date" id="dob" name="dob" required>
+          <span id="dobIcon" class="icon"></span>
+        </div>
+      </label>
+
+      <label>
+        Height:
+        <div class="input-wrap">
+          <select id="height" name="height" required>
+            <option value="">Select height</option>
+            <option value="150">150 cm</option>
+            <option value="155">155 cm</option>
+            <option value="160">160 cm</option>
+            <option value="165">165 cm</option>
+            <option value="170">170 cm</option>
+            <option value="175">175 cm</option>
+            <option value="180">180 cm</option>
+          </select>
+          <span id="heightIcon" class="icon"></span>
+        </div>
+      </label>
+
+      <label class="gender-label">
+        Gender:
+        <span id="genderIcon" class="gender-icon"></span>
+        <div class="gender-group">
+          <label><input type="radio" name="gender" value="Male" id="genderMale"> Male</label>
+          <label><input type="radio" name="gender" value="Female" id="genderFemale"> Female</label>
+          <label><input type="radio" name="gender" value="Other" id="genderOther"> Other</label>
+        </div>
+      </label>
+
+      <label>
+        Password:
+        <div class="input-wrap">
+          <input type="password" id="password" name="password" required>
+          <span id="passwordIcon" class="icon"></span>
+        </div>
+        <small>Min 8 chars, 1 upper, 1 lower, 1 special</small>
+      </label>
+
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById('photoInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          document.getElementById('photoPreview').src = evt.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function validateName(name) { return /^[A-Za-z .'-]+$/.test(name.trim()) && name.trim().length > 0; }
+    function validateDOB(dob) { return !!dob; }
+    function validateHeight(height) { return !!height; }
+    function validatePassword(pw) {
+      return pw.length >= 8 && /[A-Z]/.test(pw) && /[a-z]/.test(pw) && /[^A-Za-z0-9]/.test(pw);
+    }
+    function validateTextField(val) { return val.trim().length > 0; }
+    function validateWeight(val) { return val !== "" && !isNaN(val) && Number(val) > 0; }
+    function validateGender() { return document.querySelector('input[name="gender"]:checked') !== null; }
+
+    function setValidation(input, icon, valid) {
+      input.classList.remove('valid', 'invalid');
+      icon.classList.remove('valid', 'invalid');
+      if (input.value === "") { icon.textContent = ""; return; }
+      if (valid) { input.classList.add('valid'); icon.classList.add('valid'); icon.textContent = "✓"; }
+      else { input.classList.add('invalid'); icon.classList.add('invalid'); icon.textContent = "✗"; }
+    }
+    function setGenderValidation(valid) {
+      const icon = document.getElementById("genderIcon");
+      icon.classList.remove('valid', 'invalid');
+      if (valid) { icon.classList.add('valid'); icon.textContent = "✓"; icon.style.color = "green"; }
+      else { icon.classList.add('invalid'); icon.textContent = "✗"; icon.style.color = "red"; }
+    }
+
+    const nameError = document.getElementById("nameError");
+    const fatherNameError = document.getElementById("fatherNameError");
+    const motherNameError = document.getElementById("motherNameError");
+
+    const nameInput = document.getElementById("name");
+    const dobInput = document.getElementById("dob");
+    const heightInput = document.getElementById("height");
+    const passwordInput = document.getElementById("password");
+    const nameIcon = document.getElementById("nameIcon");
+    const dobIcon = document.getElementById("dobIcon");
+    const heightIcon = document.getElementById("heightIcon");
+    const passwordIcon = document.getElementById("passwordIcon");
+    const fatherNameInput = document.getElementById("fatherName");
+    const motherNameInput = document.getElementById("motherName");
+    const qualificationInput = document.getElementById("qualification");
+    const weightInput = document.getElementById("weight");
+    const fatherNameIcon = document.getElementById("fatherNameIcon");
+    const motherNameIcon = document.getElementById("motherNameIcon");
+    const qualificationIcon = document.getElementById("qualificationIcon");
+    const weightIcon = document.getElementById("weightIcon");
+    const genderRadios = document.querySelectorAll('input[name="gender"]');
+
+    nameInput.addEventListener("input", () => {
+      const valid = validateName(nameInput.value);
+      setValidation(nameInput, nameIcon, valid);
+      nameError.textContent = valid || nameInput.value === "" ? "" : "Only letters allowed.";
+    });
+    fatherNameInput.addEventListener("input", () => {
+      const valid = validateName(fatherNameInput.value);
+      setValidation(fatherNameInput, fatherNameIcon, valid);
+      fatherNameError.textContent = valid || fatherNameInput.value === "" ? "" : "Only letters allowed.";
+    });
+    motherNameInput.addEventListener("input", () => {
+      const valid = validateName(motherNameInput.value);
+      setValidation(motherNameInput, motherNameIcon, valid);
+      motherNameError.textContent = valid || motherNameInput.value === "" ? "" : "Only letters allowed.";
+    });
+    dobInput.addEventListener("input", () => setValidation(dobInput, dobIcon, validateDOB(dobInput.value)));
+    heightInput.addEventListener("change", () => setValidation(heightInput, heightIcon, validateHeight(heightInput.value)));
+    passwordInput.addEventListener("input", () => setValidation(passwordInput, passwordIcon, validatePassword(passwordInput.value)));
+    qualificationInput.addEventListener("input", () => setValidation(qualificationInput, qualificationIcon, validateTextField(qualificationInput.value)));
+    weightInput.addEventListener("input", () => setValidation(weightInput, weightIcon, validateWeight(weightInput.value)));
+    genderRadios.forEach(radio => radio.addEventListener("change", () => setGenderValidation(validateGender())));
+
+    document.getElementById("bioForm").addEventListener("submit", function(e){
+      const valid = validateName(nameInput.value) && validateName(fatherNameInput.value) &&
+                    validateName(motherNameInput.value) && validateDOB(dobInput.value) &&
+                    validateHeight(heightInput.value) && validatePassword(passwordInput.value) &&
+                    validateTextField(qualificationInput.value) && validateWeight(weightInput.value) &&
+                    validateGender();
+      if (!valid) {
+        e.preventDefault();
+        alert("Please fill all fields correctly before submitting.");
+      }
+    });
+  </script>
+</body>
+</html>
