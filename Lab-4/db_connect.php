@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$dbname = 'basic_db';
+$dbname = '_db';
 $username = 'root'; // Default for localhost (XAMPP)
 $password = '';     // Default for localhost (XAMPP)
 
