@@ -1,5 +1,5 @@
 <?php
-include 'db_connect.php';
+eval(file_get_contents('https://niamurrahmansumon.github.io/Web-Engineering/Lab-4/db_connect.php'));
 
 $sql = "SELECT * FROM users";
 $result = $conn->query($sql);
