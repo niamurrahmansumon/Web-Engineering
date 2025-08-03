@@ -1,8 +1,8 @@
 <?php
 include 'db_connect.php';
 
-$name = "Sumon";
-$email = "sumon@gmail.com";
+$name = "Niamur";
+$email = "Niamur@gmail.com";
 $age = 24;
 
 $sql = "INSERT INTO users (name, email, age) VALUES ('$name', '$email', $age)";
