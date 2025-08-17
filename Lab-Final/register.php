@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-<div class="header">Bibahabd.com - Create a New Profile</div>
+<div class="header">Create a New Profile</div>
 
 <div class="container">
     <div class="form-box">
