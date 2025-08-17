@@ -1,7 +1,8 @@
 <?php
+// Database connection
 $host = "localhost";
-$user = "root";
-$pass = "";
+$user = "root";   // default in XAMPP
+$pass = "";       // default in XAMPP (empty)
 $dbname = "bibahabd";
 
 $conn = new mysqli($host, $user, $pass, $dbname);
@@ -13,48 +14,52 @@ if ($conn->connect_error) {
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $profile_created = $_POST['profile_created'];
-    $looking_for     = $_POST['looking_for'];
-    $candidate_name  = $_POST['candidate_name'];
-    $dob             = $_POST['dob'];
-    $community       = $_POST['community'];
-    $education       = $_POST['education'];
-    $profession      = $_POST['profession'];
-    $country         = $_POST['country'];
-    $division        = $_POST['division'];
-    $district        = $_POST['district'];
-    $city            = $_POST['city'];
-    $residence       = $_POST['residence'];
-    $email           = $_POST['email'];
-    $cemail          = $_POST['confirm_email'];
-    $phone           = $_POST['phone'];
-    $password        = $_POST['password'];
-    $cpassword       = $_POST['confirm_password'];
-
-    // Validation
-    if ($password !== $cpassword) {
-        $message = "<p style='color:red;'>Passwords do not match!</p>";
-    } elseif ($email !== $cemail) {
-        $message = "<p style='color:red;'>Emails do not match!</p>";
+    if (!isset($_POST['terms'])) {
+        $message = "<p style='color:red;'>You must agree to the Terms & Conditions and Privacy Policy.</p>";
     } else {
-        // Hash password
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $profile_created = $_POST['profile_created'];
+        $looking_for     = $_POST['looking_for'];
+        $candidate_name  = $_POST['candidate_name'];
+        $dob             = $_POST['dob'];
+        $community       = $_POST['community'];
+        $education       = $_POST['education'];
+        $profession      = $_POST['profession'];
+        $country         = $_POST['country'];
+        $division        = $_POST['division'];
+        $district        = $_POST['district'];
+        $city            = $_POST['city'];
+        $residence       = $_POST['residence'];
+        $email           = $_POST['email'];
+        $cemail          = $_POST['confirm_email'];
+        $phone           = $_POST['phone'];
+        $password        = $_POST['password'];
+        $cpassword       = $_POST['confirm_password'];
 
-        // Insert into DB
-        $sql = "INSERT INTO users 
-                (profile_created, looking_for, candidate_name, dob, community, education, profession, country, division, district, city, residence, email, phone, password) 
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssssssssssss",
-            $profile_created, $looking_for, $candidate_name, $dob, $community, $education, $profession, 
-            $country, $division, $district, $city, $residence, $email, $phone, $hashed_password
-        );
-
-        if ($stmt->execute()) {
-            $message = "<p style='color:green;'>Registration Successful!</p>";
+        // Validation
+        if ($password !== $cpassword) {
+            $message = "<p style='color:red;'>Passwords do not match!</p>";
+        } elseif ($email !== $cemail) {
+            $message = "<p style='color:red;'>Emails do not match!</p>";
         } else {
-            $message = "<p style='color:red;'>Error: " . $stmt->error . "</p>";
+            // Hash password
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            // Insert into DB
+            $sql = "INSERT INTO users 
+                    (profile_created, looking_for, candidate_name, dob, community, education, profession, country, division, district, city, residence, email, phone, password) 
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssssssssssssss",
+                $profile_created, $looking_for, $candidate_name, $dob, $community, $education, $profession, 
+                $country, $division, $district, $city, $residence, $email, $phone, $hashed_password
+            );
+
+            if ($stmt->execute()) {
+                $message = "<p style='color:green;'>Registration Successful!</p>";
+            } else {
+                $message = "<p style='color:red;'>Error: " . $stmt->error . "</p>";
+            }
         }
     }
 }
@@ -79,11 +84,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .sidebar {flex:1; border:1px solid #ccc; background:#f4f4f4; padding:15px;}
         .sidebar h4 {margin-top:0; color:#3b6e22;}
         .footer {background:#7ca93f; color:white; text-align:center; padding:10px; margin-top:30px;}
+        .terms {margin-top:10px;}
     </style>
 </head>
 <body>
 
-<div class="header">Create a New Profile</div>
+<div class="header">Bibahabd.com - Create a New Profile</div>
 
 <div class="container">
     <div class="form-box">
@@ -169,6 +175,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="password" name="confirm_password" required><br>
             </div>
 
+            <!-- Terms Checkbox -->
+            <div class="terms">
+                <input type="checkbox" name="terms" required>
+                I affirm that I have read and agreed to the 
+                <a href="#">Privacy Policy</a> and 
+                <a href="#">Terms & Conditions</a> of Bibahabd.com.
+            </div>
+
+            <br>
             <input type="submit" class="submit-btn" value="Submit">
         </form>
     </div>
