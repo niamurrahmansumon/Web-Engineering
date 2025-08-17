@@ -35,30 +35,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password        = $_POST['password'];
         $cpassword       = $_POST['confirm_password'];
 
-        // Validation
-        if ($password !== $cpassword) {
-            $message = "<p style='color:red;'>Passwords do not match!</p>";
-        } elseif ($email !== $cemail) {
-            $message = "<p style='color:red;'>Emails do not match!</p>";
-        } else {
-            // Hash password
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        // Alphabet validation for specific fields
+        $alpha_fields = [
+            'Candidate Name' => $candidate_name,
+            'Education'      => $education,
+            'Profession'     => $profession,
+            'Country'        => $country,
+            'Division'       => $division,
+            'District'       => $district,
+            'City'           => $city
+        ];
 
-            // Insert into DB
-            $sql = "INSERT INTO users 
-                    (profile_created, looking_for, candidate_name, dob, community, education, profession, country, division, district, city, residence, email, phone, password) 
-                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        foreach ($alpha_fields as $field => $value) {
+            if (!preg_match('/^[a-zA-Z\s]+$/', $value)) {
+                $message = "<p style='color:red;'>$field must contain only alphabets and spaces.</p>";
+                break;
+            }
+        }
 
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssssssssssssss",
-                $profile_created, $looking_for, $candidate_name, $dob, $community, $education, $profession, 
-                $country, $division, $district, $city, $residence, $email, $phone, $hashed_password
-            );
-
-            if ($stmt->execute()) {
-                $message = "<p style='color:green;'>Registration Successful!</p>";
+        // Password validation
+        if (empty($message)) {
+            if ($password !== $cpassword) {
+                $message = "<p style='color:red;'>Passwords do not match!</p>";
+            } elseif ($email !== $cemail) {
+                $message = "<p style='color:red;'>Emails do not match!</p>";
+            } elseif (
+                strlen($password) < 6 ||
+                !preg_match('/[A-Za-z]/', $password) ||
+                !preg_match('/\d/', $password) ||
+                !preg_match('/[^A-Za-z0-9]/', $password)
+            ) {
+                $message = "<p style='color:red;'>Password must be at least 6 characters and include a letter, number, and special character.</p>";
             } else {
-                $message = "<p style='color:red;'>Error: " . $stmt->error . "</p>";
+                // Hash password
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                // Insert into DB
+                $sql = "INSERT INTO users 
+                        (profile_created, looking_for, candidate_name, dob, community, education, profession, country, division, district, city, residence, email, phone, password) 
+                        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("sssssssssssssss",
+                    $profile_created, $looking_for, $candidate_name, $dob, $community, $education, $profession, 
+                    $country, $division, $district, $city, $residence, $email, $phone, $hashed_password
+                );
+
+                if ($stmt->execute()) {
+                    $message = "<p style='color:green;'>Registration Successful!</p>";
+                } else {
+                    $message = "<p style='color:red;'>Error: " . $stmt->error . "</p>";
+                }
             }
         }
     }
