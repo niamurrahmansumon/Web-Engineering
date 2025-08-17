@@ -1,12 +1,12 @@
 <?php
 $host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "bibahabd";
+$user = "root";   // default XAMPP user
+$pass = "";       // default XAMPP password is empty
+$db   = "bbd";
 
-$conn = mysqli_connect($host, $user, $pass, $db);
+$conn = new mysqli($host, $user, $pass, $db);
 
-if (!$conn) {
-    die("Database Connection Failed: " . mysqli_connect_error());
+if ($conn->connect_error) {
+    die("Database Connection Failed: " . $conn->connect_error);
 }
 ?>
