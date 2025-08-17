@@ -1,108 +1,115 @@
 <?php
+// login.php
 session_start();
-require_once 'db_config.php';
+include("db.php"); // database connection
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    try {
-        $stmt = $conn->prepare("SELECT * FROM user WHERE username = :username AND password = :password");
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $password);
-        $stmt->execute();
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $query = "SELECT * FROM users WHERE email='$email' OR profile_id='$email' LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $user = mysqli_fetch_assoc($result);
 
-        if ($user) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            header("Location: index.php");
-            exit;
-        } else {
-            $error = "Invalid username or password.";
-        }
-    } catch (PDOException $e) {
-        $error = "Error: " . $e->getMessage();
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user_id'] = $user['id'];
+        header("Location: dashboard.php");
+        exit();
+    } else {
+        $error = "Invalid Email/Profile ID or Password!";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8f8f8 url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .login-container {
-      background: rgba(255, 255, 255, 0.95);
-      max-width: 400px;
-      width: 100%;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    h2 {
-      color: #333;
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      font-weight: bold;
-      margin-top: 12px;
-      text-align: left;
-    }
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
-    .error {
-      color: red;
-      font-size: 12px;
-      margin-top: 10px;
-    }
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #1976d2;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      background: #145ca1;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            width: 450px;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .login-header {
+            background: #8bb600;
+            padding: 10px;
+            color: #fff;
+            font-weight: bold;
+        }
+        .login-body {
+            display: flex;
+            padding: 20px;
+        }
+        .left-box {
+            flex: 1;
+            margin-right: 15px;
+        }
+        .left-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .left-box button {
+            background: #8bb600;
+            border: none;
+            padding: 10px 15px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .right-box {
+            flex: 1;
+            border-left: 1px solid #ddd;
+            padding-left: 15px;
+            font-size: 14px;
+            color: #333;
+        }
+        .right-box a {
+            color: #8bb600;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Login</h2>
-    <form method="POST" action="">
-      <label>Username</label>
-      <input type="text" name="username" required>
-      <label>Password</label>
-      <input type="password" name="password" required>
-      <div class="error"><?php echo isset($error) ? htmlspecialchars($error) : ''; ?></div>
-      <button type="submit">Login</button>
-    </form>
-  </div>
+    <div class="login-container">
+        <div class="login-header">Login To Continue...</div>
+        <div class="login-body">
+            <div class="left-box">
+                <?php if (!empty($error)) echo "<p class='error'>$error</p>"; ?>
+                <form method="post" action="">
+                    <input type="text" name="email" placeholder="Email ID or Profile ID" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit" name="login">LOGIN</button>
+                </form>
+            </div>
+            <div class="right-box">
+                <p><b>Not Our Member?</b><br>Have not previously registered?</p>
+                <a href="register.php"><button>REGISTER NOW</button></a>
+                <p style="margin-top:15px;">
+                    <b>Forgot Password?</b><br>
+                    <a href="recover.php">Click here for Recover</a> a new password.
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
