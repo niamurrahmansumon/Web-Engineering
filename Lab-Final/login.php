@@ -4,14 +4,23 @@ include 'db.php';
 
 $error = "";
 
+// Debugging: Show DB connection error if any
+if (!$conn) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE email='$email' OR profile_id='$email' LIMIT 1";
-    $result = mysqli_query($conn, $sql);
+    // Use prepared statements to prevent SQL injection
+    $sql = "SELECT * FROM users WHERE email=? OR profile_id=? LIMIT 1";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "ss", $email, $email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
-    if (mysqli_num_rows($result) == 1) {
+    if ($result && mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
 
         if (password_verify($password, $row['password'])) {
