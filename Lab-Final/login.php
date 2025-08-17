@@ -1,114 +1,121 @@
 <?php
 session_start();
-include("db.php");
+include 'db.php';
 
-if (isset($_POST['login'])) {
-    $email = $_POST['email'];
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM users WHERE email='$email' OR profile_id='$email' LIMIT 1";
-    $result = mysqli_query($conn, $query);
-    $user = mysqli_fetch_assoc($result);
+    $sql = "SELECT * FROM users WHERE email='$email' OR profile_id='$email' LIMIT 1";
+    $result = mysqli_query($conn, $sql);
 
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        header("Location: dashboard.php");
-        exit();
+    if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_assoc($result);
+
+        if (password_verify($password, $row['password'])) {
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_email'] = $row['email'];
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            $error = "❌ Invalid Password!";
+        }
     } else {
-        $error = "Invalid Email/Profile ID or Password!";
+        $error = "❌ Invalid Email or Profile ID!";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f8f8f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .login-container {
-            width: 450px;
-            background: #fff;
-            border: 1px solid #ccc;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .login-header {
-            background: #8bb600;
-            padding: 10px;
-            color: #fff;
-            font-weight: bold;
-        }
-        .login-body {
-            display: flex;
-            padding: 20px;
-        }
-        .left-box {
-            flex: 1;
-            margin-right: 15px;
-        }
-        .left-box input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .left-box button {
-            background: #8bb600;
-            border: none;
-            padding: 10px 15px;
-            color: #fff;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        .right-box {
-            flex: 1;
-            border-left: 1px solid #ddd;
-            padding-left: 15px;
-            font-size: 14px;
-            color: #333;
-        }
-        .right-box a {
-            color: #8bb600;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .error {
-            color: red;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 25px;
+      width: 420px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .header {
+      background: #9c0;
+      padding: 10px;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .btn {
+      background: #9c0;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background: #7a0;
+    }
+    .error { color: red; margin-bottom: 10px; }
+    .side-box {
+      margin-top: 20px;
+      padding: 10px;
+      border-left: 2px solid #ccc;
+    }
+    .side-box a {
+      color: #9c0;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-header">Login To Continue...</div>
-        <div class="login-body">
-            <div class="left-box">
-                <?php if (!empty($error)) echo "<p class='error'>$error</p>"; ?>
-                <form method="post" action="">
-                    <input type="text" name="email" placeholder="Email ID or Profile ID" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <button type="submit" name="login">LOGIN</button>
-                </form>
-            </div>
-            <div class="right-box">
-                <p><b>Not Our Member?</b><br>Have not previously registered?</p>
-                <a href="register.php"><button>REGISTER NOW</button></a>
-                <p style="margin-top:15px;">
-                    <b>Forgot Password?</b><br>
-                    <a href="recover.php">Click here for Recover</a> a new password.
-                </p>
-            </div>
-        </div>
+  <div class="login-box">
+    <div class="header">Login To Continue...</div>
+    
+    <?php if ($error) echo "<p class='error'>$error</p>"; ?>
+
+    <form method="POST">
+      <div class="form-group">
+        <label>Email ID or Profile ID</label>
+        <input type="text" name="email" placeholder="Email ID or Profile ID" required>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn">LOGIN</button>
+    </form>
+
+    <div class="side-box">
+      <p><strong>Not Our Member?</strong><br>
+      Have not previously registered?<br>
+      <a href="register.php"><button class="btn">REGISTER NOW</button></a></p>
+
+      <p><strong>Forgot Password?</strong><br>
+      <a href="recover.php">Click here for Recover</a> a new password.</p>
     </div>
+  </div>
 </body>
 </html>
