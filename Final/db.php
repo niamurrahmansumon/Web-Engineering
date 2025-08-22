@@ -1,17 +1,9 @@
 <?php
-/*
-    This file contains database configuration and establishes a connection.
-    XAMPP's default settings are:
-    Server: localhost
-    Username: root
-    Password: (empty)
-*/
-
 // Database credentials
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_NAME', 'crud_app'); // The database we created in Part 1
+define('DB_NAME', 'crud_final'); // The database we created
 
 // Attempt to connect to MySQL database
 $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
