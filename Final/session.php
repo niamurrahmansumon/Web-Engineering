@@ -6,7 +6,7 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PHP Session - Page 1</title>
+    <title>PHP Session</title>
 </head>
 <body>
 
