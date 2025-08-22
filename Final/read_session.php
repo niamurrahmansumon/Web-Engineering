@@ -24,7 +24,7 @@ session_start();
 
     <p>The server remembered who you are!</p>
     <br>
-    <a href="page1.php">Go back to Page 1</a><br>
+    <a href="session.php">Go back to Page 1</a><br>
     <a href="logout.php">Logout (Destroy Session)</a>
 
 </body>
