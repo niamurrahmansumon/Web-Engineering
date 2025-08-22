@@ -21,7 +21,7 @@ session_start();
     ?>
 
     <p>Now, let's go to another page and see if the session variables are still there.</p>
-    <a href="read.php">Go to Page 2</a>
+    <a href="read_session.php">Go to Page 2</a>
 
 </body>
 </html>
